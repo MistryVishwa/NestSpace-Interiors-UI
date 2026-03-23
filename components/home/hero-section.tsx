@@ -33,91 +33,81 @@ export function HeroSection() {
       <div className="absolute bottom-1/4 left-1/4 w-[300px] sm:w-[350px] lg:w-[400px] h-[300px] sm:h-[350px] lg:h-[400px] bg-accent/6 rounded-full blur-[60px] sm:blur-[80px] lg:blur-[100px] animate-pulse-soft" style={{ animationDelay: '1.5s' }} />
 
       {/* Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-16 xl:px-20 relative z-10 pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24">
-        <div className="max-w-5xl">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 relative z-10 pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24">
+        <div className="max-w-3xl">
           {/* Badge */}
           <div 
-            className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 rounded-full bg-primary/10 border border-primary/20 mb-6 sm:mb-8 lg:mb-10 animate-fade-up opacity-0"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 sm:mb-8 animate-fade-up opacity-0"
             style={{ animationDelay: '100ms', animationFillMode: 'forwards' }}
           >
-            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+            <Sparkles className="w-3.5 h-3.5 text-primary" />
             <span className="text-primary font-medium tracking-wide text-xs sm:text-sm">
               Award-Winning Interior Design Studio
             </span>
           </div>
 
-          {/* Headline - Significantly larger with better responsive scaling */}
+          {/* Headline - Elegant sizing: 32px mobile, 40px tablet, 56px desktop */}
           <h1 
-            className="font-serif text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[7rem] 2xl:text-[8rem] font-bold text-foreground leading-[1.02] mb-6 sm:mb-8 lg:mb-10 animate-fade-up opacity-0 text-balance"
+            className="font-serif text-[2rem] sm:text-[2.5rem] lg:text-[3.5rem] font-bold text-foreground leading-[1.1] mb-5 sm:mb-6 animate-fade-up opacity-0 text-balance"
             style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}
           >
             Design Your
-            <span className="block text-gradient mt-1 sm:mt-2">Dream Space</span>
+            <span className="block text-gradient mt-1">Dream Space</span>
           </h1>
 
-          {/* Subheadline - Better responsive sizing */}
+          {/* Subheadline - 16px mobile, 18px tablet, 20px desktop */}
           <p 
-            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-muted-foreground mb-8 sm:mb-10 lg:mb-14 leading-relaxed max-w-2xl animate-fade-up opacity-0 font-light"
+            className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-8 sm:mb-10 leading-relaxed max-w-xl animate-fade-up opacity-0"
             style={{ animationDelay: '400ms', animationFillMode: 'forwards' }}
           >
             We craft bespoke interiors that transform ordinary spaces into extraordinary sanctuaries of elegance and comfort.
           </p>
 
-          {/* CTA Buttons - Better responsive sizing */}
+          {/* CTA Buttons */}
           <div 
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 animate-fade-up opacity-0"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-up opacity-0"
             style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}
           >
             <Link href="/portfolio" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto h-12 sm:h-14 lg:h-16 px-6 sm:px-8 lg:px-12 text-sm sm:text-base lg:text-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/35 transition-all duration-500 rounded-xl sm:rounded-2xl btn-glow"
+                className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-500 rounded-xl"
               >
                 Explore Our Work
-                <ArrowRight className="ml-2 sm:ml-3 h-4 w-4 sm:h-5 sm:w-5" />
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
             <Link href="/contact" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="w-full sm:w-auto h-12 sm:h-14 lg:h-16 px-6 sm:px-8 lg:px-12 text-sm sm:text-base lg:text-lg font-medium border-foreground/15 bg-background/40 backdrop-blur-md hover:bg-foreground/5 hover:border-foreground/25 transition-all duration-500 rounded-xl sm:rounded-2xl"
+                className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 text-sm font-medium border-foreground/15 bg-background/40 backdrop-blur-md hover:bg-foreground/5 hover:border-foreground/25 transition-all duration-500 rounded-xl"
               >
-                <Play className="mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 fill-current" />
+                <Play className="mr-2 h-4 w-4 fill-current" />
                 Book Consultation
               </Button>
             </Link>
           </div>
 
-          {/* Trust Indicators - Better responsive layout */}
+          {/* Trust Indicators */}
           <div 
-            className="flex flex-wrap items-center gap-6 sm:gap-8 lg:gap-12 mt-12 sm:mt-16 lg:mt-20 pt-8 sm:pt-10 border-t border-border/40 animate-fade-up opacity-0"
+            className="flex flex-wrap items-center gap-6 sm:gap-8 lg:gap-10 mt-12 sm:mt-14 lg:mt-16 pt-6 sm:pt-8 border-t border-border/40 animate-fade-up opacity-0"
             style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}
           >
             <div className="flex flex-col">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground">500+</span>
-              <span className="text-xs sm:text-sm text-muted-foreground mt-1 tracking-wide">Projects Delivered</span>
+              <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground">500+</span>
+              <span className="text-xs text-muted-foreground mt-0.5 tracking-wide">Projects Delivered</span>
             </div>
-            <div className="w-px h-10 sm:h-12 lg:h-14 bg-border/60 hidden sm:block" />
+            <div className="w-px h-8 sm:h-10 bg-border/60 hidden sm:block" />
             <div className="flex flex-col">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground">15+</span>
-              <span className="text-xs sm:text-sm text-muted-foreground mt-1 tracking-wide">Years Experience</span>
+              <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground">15+</span>
+              <span className="text-xs text-muted-foreground mt-0.5 tracking-wide">Years Experience</span>
             </div>
-            <div className="w-px h-10 sm:h-12 lg:h-14 bg-border/60 hidden sm:block" />
+            <div className="w-px h-8 sm:h-10 bg-border/60 hidden sm:block" />
             <div className="flex flex-col">
-              <span className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground">25+</span>
-              <span className="text-xs sm:text-sm text-muted-foreground mt-1 tracking-wide">Design Awards</span>
+              <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground">25+</span>
+              <span className="text-xs text-muted-foreground mt-0.5 tracking-wide">Design Awards</span>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 sm:bottom-10 lg:bottom-12 left-1/2 -translate-x-1/2 z-10">
-        <div className="flex flex-col items-center gap-2 sm:gap-3 animate-fade-in opacity-0" style={{ animationDelay: '1200ms', animationFillMode: 'forwards' }}>
-          <span className="text-[10px] sm:text-xs text-muted-foreground tracking-[0.2em] sm:tracking-[0.25em] uppercase font-medium">Scroll</span>
-          <div className="w-6 h-10 sm:w-7 sm:h-12 border-2 border-foreground/20 rounded-full flex justify-center p-1.5 sm:p-2">
-            <div className="w-1 h-2.5 sm:w-1.5 sm:h-3 bg-primary rounded-full animate-bounce" />
           </div>
         </div>
       </div>

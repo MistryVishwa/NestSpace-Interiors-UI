@@ -7,6 +7,7 @@ import { TestimonialsSection } from "@/components/home/testimonials-section"
 import { StatsSection } from "@/components/home/stats-section"
 import { CTASection } from "@/components/home/cta-section"
 import { ProcessSection } from "@/components/home/process-section"
+import { ScrollToTop } from "@/components/scroll-to-top"
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
       <TestimonialsSection />
       <CTASection />
       <Footer />
+      <ScrollToTop />
     </main>
   )
 }

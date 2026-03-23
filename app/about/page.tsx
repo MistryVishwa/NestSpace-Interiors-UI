@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { CTASection } from "@/components/home/cta-section"
+import { ScrollToTop } from "@/components/scroll-to-top"
 import { Check, Target, Eye, Heart } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 
