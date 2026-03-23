@@ -61,7 +61,7 @@ function AnimatedCounter({ value, suffix, shouldAnimate }: { value: number; suff
   }, [value, shouldAnimate])
 
   return (
-    <span className="font-serif text-6xl sm:text-7xl lg:text-8xl font-bold text-foreground tabular-nums">
+    <span className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground tabular-nums">
       {count}{suffix}
     </span>
   )
@@ -80,19 +80,19 @@ export function StatsSection() {
   return (
     <section 
       ref={sectionReveal.ref}
-      className="py-40 relative overflow-hidden"
+      className="py-20 sm:py-28 lg:py-40 relative overflow-hidden"
     >
       {/* Premium Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-background to-accent/5" />
       
       {/* Decorative Blurs */}
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[150px] -translate-y-1/2 -translate-x-1/2" />
-      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute top-1/2 left-0 w-[300px] sm:w-[400px] lg:w-[500px] h-[300px] sm:h-[400px] lg:h-[500px] bg-primary/10 rounded-full blur-[100px] sm:blur-[120px] lg:blur-[150px] -translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute top-1/2 right-0 w-[300px] sm:w-[400px] lg:w-[500px] h-[300px] sm:h-[400px] lg:h-[500px] bg-accent/10 rounded-full blur-[100px] sm:blur-[120px] lg:blur-[150px] -translate-y-1/2 translate-x-1/2" />
       
-      <div className="container mx-auto px-6 lg:px-16 xl:px-20 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 xl:px-20 relative">
         <div 
           className={cn(
-            "grid grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-10 reveal",
+            "grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-10 reveal",
             sectionReveal.isVisible && "visible"
           )}
         >
@@ -104,12 +104,12 @@ export function StatsSection() {
             >
               {/* Subtle Divider */}
               {index < stats.length - 1 && (
-                <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-32 bg-gradient-to-b from-transparent via-border to-transparent" />
+                <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-24 lg:h-32 bg-gradient-to-b from-transparent via-border to-transparent" />
               )}
               
               {/* Icon */}
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-8 group-hover:bg-primary group-hover:scale-110 transition-all duration-500">
-                <stat.icon className="h-7 w-7 text-primary group-hover:text-primary-foreground transition-colors duration-500" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5 sm:mb-6 lg:mb-8 group-hover:bg-primary group-hover:scale-110 transition-all duration-500">
+                <stat.icon className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-primary group-hover:text-primary-foreground transition-colors duration-500" />
               </div>
               
               <AnimatedCounter 
@@ -117,8 +117,8 @@ export function StatsSection() {
                 suffix={stat.suffix} 
                 shouldAnimate={hasAnimated}
               />
-              <p className="text-foreground font-medium mt-4 text-xl">{stat.label}</p>
-              <p className="text-muted-foreground text-base mt-2">{stat.description}</p>
+              <p className="text-foreground font-medium mt-3 sm:mt-4 text-base sm:text-lg lg:text-xl">{stat.label}</p>
+              <p className="text-muted-foreground text-xs sm:text-sm lg:text-base mt-1 sm:mt-2">{stat.description}</p>
             </div>
           ))}
         </div>

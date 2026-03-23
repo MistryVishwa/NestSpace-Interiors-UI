@@ -46,47 +46,47 @@ export function ServicesSection() {
   const { setRef, visibleItems } = useScrollRevealMany(services.length)
 
   return (
-    <section className="py-40 bg-background relative overflow-hidden">
+    <section className="py-20 sm:py-28 lg:py-40 bg-background relative overflow-hidden">
       {/* Subtle Background Elements */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,var(--primary)_0%,transparent_50%)] opacity-[0.03]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,var(--accent)_0%,transparent_50%)] opacity-[0.03]" />
       
-      <div className="container mx-auto px-6 lg:px-16 xl:px-20 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 xl:px-20 relative">
         {/* Section Header */}
         <div 
           ref={headerReveal.ref}
           className={cn(
-            "text-center max-w-4xl mx-auto mb-24 reveal",
+            "text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-24 reveal",
             headerReveal.isVisible && "visible"
           )}
         >
-          <span className="inline-block text-primary font-medium tracking-[0.2em] uppercase text-sm mb-6">
+          <span className="inline-block text-primary font-medium tracking-[0.15em] sm:tracking-[0.2em] uppercase text-xs sm:text-sm mb-4 sm:mb-6">
             What We Offer
           </span>
-          <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-8 text-balance">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6 sm:mb-8 text-balance leading-tight">
             Our Services
           </h2>
-          <div className="decorative-line mx-auto mb-8" />
-          <p className="text-muted-foreground text-xl lg:text-2xl leading-relaxed font-light">
+          <div className="decorative-line mx-auto mb-6 sm:mb-8" />
+          <p className="text-muted-foreground text-base sm:text-lg lg:text-xl xl:text-2xl leading-relaxed font-light">
             From concept to completion, we provide end-to-end interior design solutions tailored to your unique vision.
           </p>
         </div>
 
         {/* Services Grid - Large Cards with Images */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 xl:gap-12">
           {services.map((service, index) => (
             <Link 
               key={service.title} 
               href={service.href}
               ref={setRef(index)}
               className={cn(
-                "group relative rounded-3xl overflow-hidden luxury-card reveal",
+                "group relative rounded-2xl sm:rounded-3xl overflow-hidden luxury-card reveal",
                 visibleItems[index] && "visible"
               )}
               style={{ transitionDelay: `${index * 120}ms` }}
             >
               {/* Large Background Image */}
-              <div className="relative h-[400px] lg:h-[480px] overflow-hidden">
+              <div className="relative h-[320px] sm:h-[380px] lg:h-[420px] xl:h-[480px] overflow-hidden">
                 <Image
                   src={service.image}
                   alt={service.title}
@@ -99,32 +99,32 @@ export function ServicesSection() {
               </div>
 
               {/* Content Overlay */}
-              <div className="absolute inset-0 p-10 lg:p-12 flex flex-col justify-end">
+              <div className="absolute inset-0 p-6 sm:p-8 lg:p-10 xl:p-12 flex flex-col justify-end">
                 {/* Icon */}
-                <div className="w-16 h-16 rounded-2xl bg-primary/20 backdrop-blur-sm flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-500">
-                  <service.icon className="h-8 w-8 text-primary-foreground transition-colors duration-500" />
+                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl sm:rounded-2xl bg-primary/20 backdrop-blur-sm flex items-center justify-center mb-4 sm:mb-5 lg:mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-500">
+                  <service.icon className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-primary-foreground transition-colors duration-500" />
                 </div>
 
                 {/* Title & Arrow */}
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <h3 className="font-serif text-3xl lg:text-4xl font-semibold text-primary-foreground">
+                <div className="flex items-start justify-between gap-3 sm:gap-4 mb-3 sm:mb-4">
+                  <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-semibold text-primary-foreground">
                     {service.title}
                   </h3>
-                  <div className="w-12 h-12 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center shrink-0 group-hover:bg-primary transition-all duration-500">
-                    <ArrowUpRight className="h-5 w-5 text-primary-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 rounded-full bg-primary/20 backdrop-blur-sm flex items-center justify-center shrink-0 group-hover:bg-primary transition-all duration-500">
+                    <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
                   </div>
                 </div>
 
-                <p className="text-primary-foreground/80 leading-relaxed mb-6 text-lg font-light">
+                <p className="text-primary-foreground/80 leading-relaxed mb-4 sm:mb-5 lg:mb-6 text-sm sm:text-base lg:text-lg font-light line-clamp-2 sm:line-clamp-none">
                   {service.description}
                 </p>
 
                 {/* Feature Tags */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {service.features.map((feature) => (
                     <span 
                       key={feature}
-                      className="px-4 py-1.5 text-sm rounded-full bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground/90 border border-primary-foreground/10"
+                      className="px-2.5 sm:px-3 lg:px-4 py-1 sm:py-1.5 text-xs sm:text-sm rounded-full bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground/90 border border-primary-foreground/10"
                     >
                       {feature}
                     </span>

@@ -47,21 +47,21 @@ export function Navigation() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         isScrolled
-          ? "py-3 bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-sm"
-          : "py-5 bg-transparent"
+          ? "py-2.5 sm:py-3 bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-sm"
+          : "py-3 sm:py-4 lg:py-5 bg-transparent"
       )}
     >
-      <nav className="container mx-auto px-6 lg:px-12">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-2 sm:gap-3 group"
           >
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-              <span className="font-serif text-lg font-bold text-primary-foreground">N</span>
+            <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg sm:rounded-xl bg-primary flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+              <span className="font-serif text-base sm:text-lg font-bold text-primary-foreground">N</span>
             </div>
-            <span className="font-serif text-2xl font-bold tracking-tight text-foreground hidden sm:block">
+            <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-foreground hidden sm:block">
               NestSpace
             </span>
           </Link>
@@ -88,17 +88,17 @@ export function Navigation() {
           </div>
 
           {/* Right Section */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Theme Toggle */}
             {mounted && (
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="rounded-xl h-10 w-10 hover:bg-muted transition-colors"
+                className="rounded-lg sm:rounded-xl h-8 w-8 sm:h-9 sm:w-9 lg:h-10 lg:w-10 hover:bg-muted transition-colors"
               >
-                <Sun className="h-5 w-5 rotate-0 scale-100 transition-transform dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-transform dark:rotate-0 dark:scale-100" />
+                <Sun className="h-4 w-4 sm:h-5 sm:w-5 rotate-0 scale-100 transition-transform dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-4 w-4 sm:h-5 sm:w-5 rotate-90 scale-0 transition-transform dark:rotate-0 dark:scale-100" />
                 <span className="sr-only">Toggle theme</span>
               </Button>
             )}
@@ -106,7 +106,7 @@ export function Navigation() {
             {/* CTA Button - Desktop */}
             <Link href="/contact" className="hidden lg:block">
               <Button 
-                className="h-10 px-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
+                className="h-9 lg:h-10 px-4 lg:px-6 text-sm bg-primary text-primary-foreground hover:bg-primary/90 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 rounded-lg lg:rounded-xl"
               >
                 Book Consultation
               </Button>
@@ -115,8 +115,8 @@ export function Navigation() {
             {/* Mobile Menu */}
             <Sheet>
               <SheetTrigger asChild className="lg:hidden">
-                <Button variant="ghost" size="icon" className="rounded-xl h-10 w-10">
-                  <Menu className="h-5 w-5" />
+                <Button variant="ghost" size="icon" className="rounded-lg sm:rounded-xl h-8 w-8 sm:h-9 sm:w-9 lg:h-10 lg:w-10">
+                  <Menu className="h-4 w-4 sm:h-5 sm:w-5" />
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>

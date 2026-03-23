@@ -6,6 +6,7 @@ import { PortfolioSection } from "@/components/home/portfolio-section"
 import { TestimonialsSection } from "@/components/home/testimonials-section"
 import { StatsSection } from "@/components/home/stats-section"
 import { CTASection } from "@/components/home/cta-section"
+import { ProcessSection } from "@/components/home/process-section"
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Navigation />
       <HeroSection />
       <ServicesSection />
+      <ProcessSection />
       <PortfolioSection />
       <StatsSection />
       <TestimonialsSection />
