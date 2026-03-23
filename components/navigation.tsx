@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, Moon, Sun } from "lucide-react"
+import { Menu, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -45,64 +45,69 @@ export function Navigation() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-sm border-b border-border"
-          : "bg-transparent"
+          ? "py-3 bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-sm"
+          : "py-5 bg-transparent"
       )}
     >
-      <nav className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <nav className="container mx-auto px-6 lg:px-12">
+        <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="font-serif text-2xl font-bold tracking-tight text-foreground">
+          <Link 
+            href="/" 
+            className="flex items-center gap-3 group"
+          >
+            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+              <span className="font-serif text-lg font-bold text-primary-foreground">N</span>
+            </div>
+            <span className="font-serif text-2xl font-bold tracking-tight text-foreground hidden sm:block">
               NestSpace
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary relative",
+                  "relative px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-muted",
                   pathname === link.href
                     ? "text-primary"
-                    : "text-muted-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 )}
               >
                 {link.label}
                 {pathname === link.href && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary" />
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary" />
                 )}
               </Link>
             ))}
           </div>
 
           {/* Right Section */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             {/* Theme Toggle */}
             {mounted && (
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="rounded-full"
+                className="rounded-xl h-10 w-10 hover:bg-muted transition-colors"
               >
-                {theme === "dark" ? (
-                  <Sun className="h-5 w-5" />
-                ) : (
-                  <Moon className="h-5 w-5" />
-                )}
+                <Sun className="h-5 w-5 rotate-0 scale-100 transition-transform dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-transform dark:rotate-0 dark:scale-100" />
                 <span className="sr-only">Toggle theme</span>
               </Button>
             )}
 
             {/* CTA Button - Desktop */}
             <Link href="/contact" className="hidden lg:block">
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <Button 
+                className="h-10 px-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
+              >
                 Book Consultation
               </Button>
             </Link>
@@ -110,40 +115,52 @@ export function Navigation() {
             {/* Mobile Menu */}
             <Sheet>
               <SheetTrigger asChild className="lg:hidden">
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
+                <Button variant="ghost" size="icon" className="rounded-xl h-10 w-10">
+                  <Menu className="h-5 w-5" />
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:w-80">
-                <div className="flex flex-col gap-8 pt-8">
-                  <div className="flex items-center justify-between">
+              <SheetContent side="right" className="w-full sm:w-96 p-0">
+                <div className="flex flex-col h-full">
+                  {/* Mobile Header */}
+                  <div className="flex items-center gap-3 p-6 border-b border-border">
+                    <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+                      <span className="font-serif text-lg font-bold text-primary-foreground">N</span>
+                    </div>
                     <span className="font-serif text-xl font-bold">NestSpace</span>
                   </div>
-                  <nav className="flex flex-col gap-4">
-                    {navLinks.map((link) => (
-                      <SheetClose asChild key={link.href}>
-                        <Link
-                          href={link.href}
-                          className={cn(
-                            "text-lg font-medium transition-colors hover:text-primary py-2 border-b border-border",
-                            pathname === link.href
-                              ? "text-primary"
-                              : "text-foreground"
-                          )}
-                        >
-                          {link.label}
-                        </Link>
-                      </SheetClose>
-                    ))}
+
+                  {/* Mobile Nav Links */}
+                  <nav className="flex-1 p-6">
+                    <div className="flex flex-col gap-2">
+                      {navLinks.map((link) => (
+                        <SheetClose asChild key={link.href}>
+                          <Link
+                            href={link.href}
+                            className={cn(
+                              "flex items-center px-4 py-3 rounded-xl text-lg font-medium transition-colors",
+                              pathname === link.href
+                                ? "bg-primary/10 text-primary"
+                                : "text-foreground hover:bg-muted"
+                            )}
+                          >
+                            {link.label}
+                          </Link>
+                        </SheetClose>
+                      ))}
+                    </div>
                   </nav>
-                  <SheetClose asChild>
-                    <Link href="/contact">
-                      <Button className="w-full bg-primary text-primary-foreground">
-                        Book Consultation
-                      </Button>
-                    </Link>
-                  </SheetClose>
+
+                  {/* Mobile Footer */}
+                  <div className="p-6 border-t border-border">
+                    <SheetClose asChild>
+                      <Link href="/contact">
+                        <Button className="w-full h-12 bg-primary text-primary-foreground hover:bg-primary/90">
+                          Book Consultation
+                        </Button>
+                      </Link>
+                    </SheetClose>
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>

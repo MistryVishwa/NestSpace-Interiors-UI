@@ -35,9 +35,10 @@ export default function RootLayout({
       <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="system"
           enableSystem
           disableTransitionOnChange={false}
+          storageKey="nestspace-theme"
         >
           {children}
         </ThemeProvider>
