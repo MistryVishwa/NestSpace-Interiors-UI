@@ -71,7 +71,7 @@ export function HeroSection() {
             <Link href="/portfolio" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 text-sm font-medium rounded-full border border-primary/30 bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:-translate-y-0.5 hover:bg-accent hover:text-accent-foreground hover:border-accent/60 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+                className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 text-sm font-medium rounded-xl border border-primary/20 bg-primary text-primary-foreground shadow-[0_10px_30px_rgba(201,138,63,0.22)] transition-all duration-300 hover:bg-primary/90 hover:shadow-[0_14px_40px_rgba(201,138,63,0.32)] hover:-translate-y-0.5"
               >
                 Explore Our Work
                 <ArrowRight className="ml-2 h-4 w-4" />

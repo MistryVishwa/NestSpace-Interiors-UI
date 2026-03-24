@@ -221,10 +221,9 @@ export default function PortfolioPage() {
 
           {/* Load More */}
           <div className="text-center mt-20">
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="h-14 px-10 rounded-full border-primary/35 bg-background text-primary shadow-sm hover:-translate-y-0.5 hover:border-primary hover:bg-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/15 transition-all duration-300"
+            <Button
+              size="lg"
+              className="h-14 px-10 rounded-full border border-primary/40 bg-secondary/40 text-foreground backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-[0_14px_40px_rgba(201,138,63,0.28)] hover:-translate-y-0.5"
             >
               Load More Projects
             </Button>
