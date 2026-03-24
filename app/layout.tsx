@@ -4,20 +4,20 @@ import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
-const inter = Inter({ 
-  subsets: ["latin"],
+const inter = Inter({
+  subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
 })
 
-const playfair = Playfair_Display({ 
-  subsets: ["latin"],
+const playfair = Playfair_Display({
+  subsets: ['latin'],
   variable: '--font-playfair',
   display: 'swap',
 })
 
-const poppins = Poppins({ 
-  subsets: ["latin"],
+const poppins = Poppins({
+  subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-poppins',
   display: 'swap',
@@ -25,19 +25,22 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'NestSpace Interiors | Premium Interior Design',
-  description: 'We create modern, elegant interiors for homes and offices. Transform your space with our luxury design services.',
-  keywords: ['interior design', 'luxury interiors', 'home design', 'office design', 'modular kitchen'],
+  description:
+    'We create modern, elegant interiors for homes and offices. Transform your space with our luxury design services.',
+  keywords: [
+    'interior design',
+    'luxury interiors',
+    'home design',
+    'office design',
+    'modular kitchen',
+  ],
   openGraph: {
     title: 'NestSpace Interiors | Premium Interior Design',
     description: 'We create modern, elegant interiors for homes and offices.',
     type: 'website',
   },
-}
-export const metadata = {
-  title: "NestSpace Interiors",
-  description: "Premium Interior Design Studio",
   icons: {
-    icon: "/favicon.ico",
+    icon: '/favicon.ico',
   },
 }
 
