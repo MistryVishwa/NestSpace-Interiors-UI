@@ -66,11 +66,12 @@ export function HeroSection() {
             style={{ animationDelay: '600ms', animationFillMode: 'forwards' }}
           >
             <Link href="/portfolio" className="w-full sm:w-auto">
-              <Button
-                variant="outline"
-                className="h-14 px-8 rounded-full border border-primary/30 bg-white/70 text-foreground backdrop-blur-md shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-[0_14px_36px_rgba(201,138,63,0.25)] hover:-translate-y-0.5"
+              <Button 
+                size="lg" 
+                className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 text-sm font-medium rounded-xl border border-primary/20 bg-primary text-primary-foreground shadow-[0_10px_30px_rgba(201,138,63,0.22)] transition-all duration-300 hover:bg-primary/90 hover:shadow-[0_14px_40px_rgba(201,138,63,0.32)] hover:-translate-y-0.5"
               >
                 Explore Our Work
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
             <Link href="/contact" className="w-full sm:w-auto">
