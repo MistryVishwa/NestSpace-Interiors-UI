@@ -47,10 +47,7 @@ export function HeroSection() {
           </div>
 
           {/* Headline - Elegant sizing: 32px mobile, 40px tablet, 56px desktop */}
-          <h1 
-            className="font-serif text-[2.1rem] sm:text-[2.6rem] lg:text-[3.7rem] font-bold text-foreground leading-[1.1] mb-5 sm:mb-6 animate-fade-up opacity-0 text-balance"
-            style={{ animationDelay: '200ms', animationFillMode: 'forwards' }}
-          >
+          <h1 className="font-serif text-[2.1rem] sm:text-[2.6rem] lg:text-[5.5rem] font-bold text-foreground leading-[1.1] mb-5 sm:mb-6 animate-fade-up opacity-0 text-balance">
             Design Your
             <span className="block text-gradient mt-1">Dream Space</span>
           </h1>
