@@ -126,5 +126,5 @@
 }
 
 span.font-serif.text-6xl.font-bold.text-primary\/10.absolute.-top-2.-left-2.group-hover\:text-primary\/20.transition-colors {
-  padding: 10px 32px 0px 32px;
+  padding: 10px 32px 0px 32px !important;
 }
