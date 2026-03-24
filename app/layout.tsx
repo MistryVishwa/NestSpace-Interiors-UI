@@ -33,6 +33,13 @@ export const metadata: Metadata = {
     type: 'website',
   },
 }
+export const metadata = {
+  title: "NestSpace Interiors",
+  description: "Premium Interior Design Studio",
+  icons: {
+    icon: "/favicon.ico",
+  },
+}
 
 export default function RootLayout({
   children,
