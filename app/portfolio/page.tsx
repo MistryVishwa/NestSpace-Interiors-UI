@@ -224,7 +224,7 @@ export default function PortfolioPage() {
             <Button 
               variant="outline" 
               size="lg" 
-              className="h-14 px-10 rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              className="h-14 px-10 rounded-full border-primary/35 bg-background text-primary shadow-sm hover:-translate-y-0.5 hover:border-primary hover:bg-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/15 transition-all duration-300"
             >
               Load More Projects
             </Button>

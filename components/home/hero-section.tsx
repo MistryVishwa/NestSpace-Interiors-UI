@@ -71,7 +71,7 @@ export function HeroSection() {
             <Link href="/portfolio" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-500 rounded-xl"
+                className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 text-sm font-medium rounded-full border border-primary/30 bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:-translate-y-0.5 hover:bg-accent hover:text-accent-foreground hover:border-accent/60 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
               >
                 Explore Our Work
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -81,7 +81,7 @@ export function HeroSection() {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 text-sm font-medium border-foreground/15 bg-background/40 backdrop-blur-md hover:bg-foreground/5 hover:border-foreground/25 transition-all duration-500 rounded-xl"
+                className="w-full sm:w-auto h-11 sm:h-12 px-6 sm:px-8 text-sm font-medium rounded-full border border-primary/25 bg-background/20 text-foreground backdrop-blur-md hover:-translate-y-0.5 hover:bg-primary/10 hover:border-primary/50 hover:text-primary transition-all duration-300"
               >
                 <Play className="mr-2 h-4 w-4 fill-current" />
                 Book Consultation

@@ -188,16 +188,23 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((item, index) => (
-              <Card key={item.step} className="bg-card border-border relative overflow-hidden group hover:shadow-lg transition-shadow">
-                <CardContent className="p-8">
-                  <span className="font-serif text-6xl font-bold text-primary/10 absolute -top-2 -left-2 group-hover:text-primary/20 transition-colors">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
+            {process.map((item) => (
+              <Card
+                key={item.step}
+                className="relative h-full overflow-hidden rounded-[2rem] border border-border/70 bg-card/95 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
+              >
+                <CardContent className="relative flex h-full flex-col p-8 pt-20">
+                  <span className="absolute left-6 top-5 font-serif text-5xl md:text-6xl font-bold leading-none text-primary/18">
                     {item.step}
                   </span>
-                  <div className="relative">
-                    <h3 className="font-semibold text-xl text-foreground mb-3 mt-8">{item.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                  <div className="relative z-10 flex h-full flex-col">
+                    <h3 className="font-serif text-2xl font-semibold text-foreground mb-4 min-h-[64px]">
+                      {item.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-8 text-base">
+                      {item.description}
+                    </p>
                   </div>
                 </CardContent>
               </Card>

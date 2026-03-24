@@ -47,7 +47,7 @@ export function CTASection() {
             <Link href="/contact" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto h-11 px-6 sm:px-8 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35 transition-all duration-300 rounded-xl"
+                className="w-full sm:w-auto h-11 px-6 sm:px-8 text-sm font-medium rounded-full border border-primary/30 bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:-translate-y-0.5 hover:bg-accent hover:text-accent-foreground hover:border-accent/60 hover:shadow-xl hover:shadow-primary/35 transition-all duration-300"
               >
                 Start Your Project
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -57,7 +57,7 @@ export function CTASection() {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="w-full sm:w-auto h-11 px-6 sm:px-8 text-sm font-medium border-background/30 text-background hover:bg-background/10 transition-all duration-300 rounded-xl"
+                className="w-full sm:w-auto h-11 px-6 sm:px-8 text-sm font-medium rounded-full border border-background/20 bg-background/5 text-background hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
               >
                 Explore Our Work
               </Button>
