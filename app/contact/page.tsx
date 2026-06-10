@@ -16,13 +16,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: "Get In Touch",
-  description:
-    "Ready to transform your space? Contact NestSpace Interiors today to schedule a design consultation.",
-};
 
 const contactInfo = [
   {

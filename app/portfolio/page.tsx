@@ -10,13 +10,6 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ArrowUpRight } from "lucide-react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
-import { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Our Portfolio",
-  description:
-    "Explore our luxury interior design projects, from modern living rooms to elegant corporate offices.",
-};
 
 const categories = ["All", "Home", "Office", "Kitchen", "Luxury"]
 
