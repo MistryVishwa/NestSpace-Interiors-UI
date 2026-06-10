@@ -6,6 +6,13 @@ import { CTASection } from "@/components/home/cta-section"
 import { Home, Building2, UtensilsCrossed, Crown, Check, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Our Design Services",
+  description:
+    "From luxury residential styling to modern corporate office design, explore our full suite of interior architecture services.",
+};
 
 const services = [
   {
