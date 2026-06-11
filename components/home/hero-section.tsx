@@ -1,4 +1,5 @@
 import Image from "next/image";
+import heroImage from "@/public/images/hero-interior.jpg";
 import Link from "next/link";
 import { ArrowRight, Play, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,11 +10,13 @@ export function HeroSection() {
       {/* Background Image - Large & Immersive */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-interior.jpg"
+          src={heroImage}
           alt="Luxury interior design"
           fill
           className="object-cover scale-[1.02]"
           priority
+          fetchPriority="high"
+          placeholder="blur"
           sizes="100vw"
         />
 
