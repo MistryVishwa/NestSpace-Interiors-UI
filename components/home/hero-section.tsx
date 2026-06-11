@@ -7,15 +7,18 @@ export function HeroSection() {
   return (
     <section className="relative min-h-svh flex items-center overflow-hidden">
       {/* Background Image - Large & Immersive */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-interior.jpg"
-          alt="Luxury interior design"
-          fill
-          className="object-cover scale-[1.02]"
-          priority
-          sizes="100vw"
-        />
+
+<Image
+  src="/images/hero-interior.jpg"
+  alt="Luxury interior design"
+  fill
+  className="object-cover scale-[1.02]"
+  priority
+  fetchPriority="high"
+  sizes="100vw"
+/>
+
+
 
         {/* Premium Multi-Layer Gradient Overlay */}
         <div className="absolute inset-0 bg-linear-to-r from-background via-background/90 to-background/30" />
