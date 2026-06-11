@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[100svh] flex items-center overflow-hidden">
+    <section className="relative min-h-svh flex items-center overflow-hidden">
       {/* Background Image - Large & Immersive */}
 
 <Image
@@ -21,29 +21,23 @@ export function HeroSection() {
 
 
         {/* Premium Multi-Layer Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-background/50" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-transparent to-accent/5" />
+        <div className="absolute inset-0 bg-linear-to-r from-background via-background/90 to-background/30" />
+        <div className="absolute inset-0 bg-linear-to-t from-background via-background/30 to-background/50" />
+        <div className="absolute inset-0 bg-linear-to-br from-primary/8 via-transparent to-accent/5" />
 
         {/* Subtle Vignette */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--background)_100%)] opacity-40" />
       </div>
 
       {/* Animated Decorative Elements */}
-      <div className="absolute top-1/3 right-1/3 w-[400px] sm:w-[500px] lg:w-[600px] h-[400px] sm:h-[500px] lg:h-[600px] bg-primary/8 rounded-full blur-[80px] sm:blur-[100px] lg:blur-[120px] animate-pulse-soft" />
-      <div
-        className="absolute bottom-1/4 left-1/4 w-[300px] sm:w-[350px] lg:w-[400px] h-[300px] sm:h-[350px] lg:h-[400px] bg-accent/6 rounded-full blur-[60px] sm:blur-[80px] lg:blur-[100px] animate-pulse-soft"
-        style={{ animationDelay: "1.5s" }}
-      />
+      <div className="absolute top-1/3 right-1/3 w-100 sm:w-125 lg:w-150 h-100 sm:h-125 lg:h-150 bg-primary/8 rounded-full blur-[80px] sm:blur-[100px] lg:blur-[120px] animate-pulse duration-3000" />
+      <div className="absolute bottom-1/4 left-1/4 w-75 sm:w-87.5 lg:w-100 h-75 sm:h-87.5 lg:h-100 bg-accent/6 rounded-full blur-[60px] sm:blur-[80px] lg:blur-[100px] animate-pulse duration-3000 delay-1500" />
 
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 relative z-10 pt-24 sm:pt-28 lg:pt-32 pb-16 sm:pb-20 lg:pb-24">
         <div className="max-w-3xl">
           {/* Badge */}
-          <div
-            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 sm:mb-8 animate-fade-up opacity-0"
-            style={{ animationDelay: "100ms", animationFillMode: "forwards" }}
-          >
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 mb-6 sm:mb-8 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-100 fill-mode-both ">
             <Sparkles className="w-3.5 h-3.5 text-primary" />
             <span className="text-primary font-medium tracking-wide text-xs sm:text-sm">
               Interior Design Studio
@@ -51,25 +45,19 @@ export function HeroSection() {
           </div>
 
           {/* Headline - Elegant sizing: 32px mobile, 40px tablet, 56px desktop */}
-          <h1 className="font-serif text-[2.1rem] sm:text-[2.6rem] lg:text-[5.5rem] font-bold text-foreground leading-[1.1] mb-5 sm:mb-6 animate-fade-up opacity-0 text-balance">
+          <h1 className="font-serif text-[2.1rem] sm:text-[2.6rem] lg:text-[5.5rem] font-bold text-foreground leading-[1.1] mb-5 sm:mb-6 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200 fill-mode-both text-balance">
             Design Your
             <span className="block text-gradient mt-1">Dream Space</span>
           </h1>
 
           {/* Subheadline - 16px mobile, 18px tablet, 20px desktop */}
-          <p
-            className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-8 sm:mb-10 leading-relaxed max-w-xl animate-fade-up opacity-0"
-            style={{ animationDelay: "400ms", animationFillMode: "forwards" }}
-          >
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground mb-8 sm:mb-10 leading-relaxed max-w-xl animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-400 fill-mode-both">
             We craft bespoke interiors that transform ordinary spaces into
             extraordinary sanctuaries of elegance and comfort.
           </p>
 
           {/* CTA Buttons */}
-          <div
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-up opacity-0"
-            style={{ animationDelay: "600ms", animationFillMode: "forwards" }}
-          >
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-600 fill-mode-both">
             <Button
               asChild
               size="lg"
@@ -94,10 +82,7 @@ export function HeroSection() {
           </div>
 
           {/* Trust Indicators */}
-          <div
-            className="flex flex-wrap items-center gap-6 sm:gap-8 lg:gap-10 mt-12 sm:mt-14 lg:mt-16 pt-6 sm:pt-8 border-t border-border/40 animate-fade-up opacity-0"
-            style={{ animationDelay: "800ms", animationFillMode: "forwards" }}
-          >
+          <div className="flex flex-wrap items-center gap-6 sm:gap-8 lg:gap-10 mt-12 sm:mt-14 lg:mt-16 pt-6 sm:pt-8 border-t border-border/40 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-800 fill-mode-both">
             <div className="flex flex-col">
               <span className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground">
                 500+

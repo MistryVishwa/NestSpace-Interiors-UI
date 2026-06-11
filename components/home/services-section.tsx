@@ -86,7 +86,7 @@ export function ServicesSection() {
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Background Image */}
-              <div className="relative h-[280px] sm:h-[320px] lg:h-[360px] overflow-hidden">
+              <div className="relative h-70 sm:h-80 lg:h-90 overflow-hidden">
                 <Image
                   src={service.image}
                   alt={service.title}
@@ -94,8 +94,8 @@ export function ServicesSection() {
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Premium Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/50 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-linear-to-t from-foreground/95 via-foreground/50 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
               {/* Content Overlay */}

@@ -254,7 +254,7 @@ export default function ContactPage() {
               </p>
             </div>
             {/* Map Placeholder */}
-            <div className="relative aspect-[16/6] rounded-lg overflow-hidden bg-muted">
+            <div className="relative aspect-16/6 rounded-lg overflow-hidden bg-muted">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />

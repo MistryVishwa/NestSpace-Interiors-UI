@@ -62,8 +62,8 @@ export function PortfolioSection() {
   return (
     <section className="py-16 sm:py-20 lg:py-28 bg-background relative overflow-hidden">
       {/* Background Accents */}
-      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-secondary/30 to-transparent pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-secondary/30 to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-1/2 bg-linear-to-b from-secondary/30 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-1/3 bg-linear-to-t from-secondary/30 to-transparent pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative">
         {/* Header */}
@@ -110,8 +110,8 @@ export function PortfolioSection() {
               className={cn(
                 "masonry-item block group relative rounded-xl sm:rounded-2xl overflow-hidden image-zoom reveal-scale",
                 visibleItems[index] && "visible",
-                item.size === "tall" && "aspect-[3/4]",
-                item.size === "medium" && "aspect-[4/3]",
+                item.size === "tall" && "aspect-3/4",
+                item.size === "medium" && "aspect-4/3",
               )}
               style={{ transitionDelay: `${index * 80}ms` }}
             >
@@ -124,14 +124,14 @@ export function PortfolioSection() {
               />
 
               {/* Default Subtle Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/10 to-transparent group-hover:opacity-0 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-linear-to-t from-foreground/70 via-foreground/10 to-transparent group-hover:opacity-0 transition-opacity duration-500" />
 
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/95 via-foreground/60 to-foreground/20 opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              <div className="absolute inset-0 bg-linear-to-t from-foreground/95 via-foreground/60 to-foreground/20 opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
               {/* Content on Hover */}
               <div className="absolute inset-0 p-4 sm:p-5 lg:p-6 flex flex-col justify-end translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
-                <span className="text-primary text-xs font-medium uppercase tracking-[0.1em] mb-1.5 sm:mb-2">
+                <span className="text-primary text-xs font-medium uppercase tracking-widest mb-1.5 sm:mb-2">
                   {item.category}
                 </span>
                 <div className="flex items-end justify-between gap-3">
@@ -146,7 +146,7 @@ export function PortfolioSection() {
 
               {/* Default Label */}
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 lg:p-6 group-hover:opacity-0 transition-opacity duration-300">
-                <span className="text-primary-foreground/60 text-[10px] sm:text-xs font-medium uppercase tracking-[0.1em]">
+                <span className="text-primary-foreground/60 text-[10px] sm:text-xs font-medium uppercase tracking-widest">
                   {item.category}
                 </span>
                 <h3 className="text-primary-foreground font-serif font-medium text-base sm:text-lg mt-0.5">

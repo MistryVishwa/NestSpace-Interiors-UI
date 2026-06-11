@@ -211,7 +211,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
       
       {/* Hero Section */}
       <section className="pt-24 pb-0">
-        <div className="relative h-[60vh] min-h-[500px]">
+        <div className="relative h-[60vh] min-h-125">
           <Image
             src={project.heroImage}
             alt={project.title}
@@ -219,7 +219,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-background via-background/30 to-transparent" />
         </div>
       </section>
 
@@ -304,7 +304,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           </h2>
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {project.gallery.map((image, index) => (
-              <div key={index} className="relative aspect-[4/3] rounded-lg overflow-hidden image-zoom">
+              <div key={index} className="relative aspect-4/3 rounded-lg overflow-hidden image-zoom">
                 <Image
                   src={image}
                   alt={`${project.title} gallery image ${index + 1}`}
@@ -325,7 +325,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           </h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div>
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-4">
+              <div className="relative aspect-4/3 rounded-lg overflow-hidden mb-4">
                 <Image
                   src={project.beforeAfter.before}
                   alt="Before"
@@ -336,7 +336,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               <p className="text-center font-medium text-muted-foreground">Before</p>
             </div>
             <div>
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden mb-4">
+              <div className="relative aspect-4/3 rounded-lg overflow-hidden mb-4">
                 <Image
                   src={project.beforeAfter.after}
                   alt="After"

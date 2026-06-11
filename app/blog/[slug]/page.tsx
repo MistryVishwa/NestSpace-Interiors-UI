@@ -48,7 +48,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
               </div>
             </div>
 
-            <div className="relative aspect-[16/9] rounded-[2rem] overflow-hidden border border-border/60 mb-12">
+            <div className="relative aspect-video rounded-4xl overflow-hidden border border-border/60 mb-12">
               <Image src={post.image} alt={post.title} fill className="object-cover" />
             </div>
 
@@ -70,7 +70,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                 ))}
               </div>
 
-              <div className="mt-10 rounded-[2rem] border border-border bg-secondary/40 p-8">
+              <div className="mt-10 rounded-4xl border border-border bg-secondary/40 p-8">
                 <h3 className="font-serif text-2xl font-bold text-foreground mb-3">Final Thought</h3>
                 <p className="text-muted-foreground leading-8 text-base md:text-lg">{post.content.conclusion}</p>
               </div>

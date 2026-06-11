@@ -83,11 +83,11 @@ export function StatsSection() {
       className="py-14 sm:py-16 lg:py-20 relative overflow-hidden"
     >
       {/* Premium Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/3" />
+      <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-background to-accent/3" />
       
       {/* Decorative Blurs */}
-      <div className="absolute top-1/2 left-0 w-[250px] sm:w-[350px] lg:w-[400px] h-[250px] sm:h-[350px] lg:h-[400px] bg-primary/8 rounded-full blur-[80px] sm:blur-[100px] lg:blur-[120px] -translate-y-1/2 -translate-x-1/2" />
-      <div className="absolute top-1/2 right-0 w-[250px] sm:w-[350px] lg:w-[400px] h-[250px] sm:h-[350px] lg:h-[400px] bg-accent/8 rounded-full blur-[80px] sm:blur-[100px] lg:blur-[120px] -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute top-1/2 left-0 w-62.5 sm:w-87.5 lg:w-100 h-62.5 sm:h-87.5 lg:h-100 bg-primary/8 rounded-full blur-[80px] sm:blur-[100px] lg:blur-[120px] -translate-y-1/2 -translate-x-1/2" />
+      <div className="absolute top-1/2 right-0 w-62.5 sm:w-87.5 lg:w-100 h-62.5 sm:h-87.5 lg:h-100 bg-accent/8 rounded-full blur-[80px] sm:blur-[100px] lg:blur-[120px] -translate-y-1/2 translate-x-1/2" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative">
         <div 
@@ -104,7 +104,7 @@ export function StatsSection() {
             >
               {/* Subtle Divider */}
               {index < stats.length - 1 && (
-                <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-16 lg:h-20 bg-gradient-to-b from-transparent via-border to-transparent" />
+                <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-16 lg:h-20 bg-linear-to-b from-transparent via-border to-transparent" />
               )}
               
               {/* Icon */}

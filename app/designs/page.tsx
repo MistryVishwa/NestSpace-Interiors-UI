@@ -54,7 +54,7 @@ export default function AllDesignsPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-36 pb-24 bg-gradient-to-b from-secondary/50 to-background relative overflow-hidden">
+      <section className="pt-36 pb-24 bg-linear-to-b from-secondary/50 to-background relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--primary)_0%,transparent_50%)] opacity-5" />
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div 
@@ -116,7 +116,7 @@ export default function AllDesignsPage() {
                 <div 
                   className={cn(
                     "relative rounded-2xl overflow-hidden image-zoom",
-                    design.size === "tall" ? "aspect-[3/4]" : design.size === "wide" ? "aspect-[16/10]" : "aspect-[4/3]"
+                    design.size === "tall" ? "aspect-3/4" : design.size === "wide" ? "aspect-16/10" : "aspect-4/3"
                   )}
                 >
                   <Image
@@ -126,7 +126,7 @@ export default function AllDesignsPage() {
                     className="object-cover"
                   />
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-linear-to-t from-foreground/90 via-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                   
                   {/* Content */}
                   <div className="absolute inset-0 p-6 flex flex-col justify-end translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">

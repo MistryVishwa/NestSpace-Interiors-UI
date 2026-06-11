@@ -32,9 +32,9 @@ export default function BlogPage() {
         <div className="container mx-auto px-4 lg:px-8">
           <Link href={`/blog/${featuredPost.slug}`} className="block group">
             <div className="grid lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
-              <div className="relative aspect-[16/10] rounded-3xl overflow-hidden image-zoom border border-border/60">
+              <div className="relative aspect-16/10 rounded-3xl overflow-hidden image-zoom border border-border/60">
                 <Image src={featuredPost.image} alt={featuredPost.title} fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-foreground/40 to-transparent" />
                 <div className="absolute top-4 left-4">
                   <span className="bg-primary text-primary-foreground px-3 py-1 text-sm font-medium rounded-full">
                     Featured
@@ -67,7 +67,7 @@ export default function BlogPage() {
             {latestPosts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`}>
                 <Card className="h-full bg-card border-border/60 overflow-hidden group hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 rounded-3xl">
-                  <div className="relative aspect-[16/10] overflow-hidden">
+                  <div className="relative aspect-16/10 overflow-hidden">
                     <Image
                       src={post.image}
                       alt={post.title}

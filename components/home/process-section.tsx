@@ -78,10 +78,10 @@ export function ProcessSection() {
         {/* Process Steps - Timeline Style */}
         <div className="relative max-w-4xl mx-auto">
           {/* Connection Line - Desktop */}
-          <div className="hidden lg:block absolute top-16 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div className="hidden lg:block absolute top-16 left-0 right-0 h-px bg-linear-to-r from-transparent via-border to-transparent" />
           
           {/* Connection Line - Mobile */}
-          <div className="lg:hidden absolute top-0 bottom-0 left-5 sm:left-6 w-px bg-gradient-to-b from-transparent via-border to-transparent" />
+          <div className="lg:hidden absolute top-0 bottom-0 left-5 sm:left-6 w-px bg-linear-to-b from-transparent via-border to-transparent" />
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-3">
             {processSteps.map((step, index) => (

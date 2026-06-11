@@ -1,13 +1,26 @@
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
-import { HeroSection } from "@/components/home/hero-section"
-import { ServicesSection } from "@/components/home/services-section"
-import { PortfolioSection } from "@/components/home/portfolio-section"
-import { TestimonialsSection } from "@/components/home/testimonials-section"
-import { StatsSection } from "@/components/home/stats-section"
-import { CTASection } from "@/components/home/cta-section"
-import { ProcessSection } from "@/components/home/process-section"
-import { ScrollToTop } from "@/components/scroll-to-top"
+import { Metadata } from "next";
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
+import { HeroSection } from "@/components/home/hero-section";
+import { ServicesSection } from "@/components/home/services-section";
+import { PortfolioSection } from "@/components/home/portfolio-section";
+import { TestimonialsSection } from "@/components/home/testimonials-section";
+import { StatsSection } from "@/components/home/stats-section";
+import { CTASection } from "@/components/home/cta-section";
+import { ProcessSection } from "@/components/home/process-section";
+import { ScrollToTop } from "@/components/scroll-to-top";
+
+export const metadata: Metadata = {
+  title: "NestSpace Interiors | Design Your Dream Space",
+  description:
+    "We craft bespoke interiors that transform ordinary spaces into extraordinary sanctuaries of elegance and comfort.",
+  openGraph: {
+    title: "NestSpace Interiors | Design Your Dream Space",
+    description:
+      "We craft bespoke interiors that transform ordinary spaces into extraordinary sanctuaries of elegance and comfort.",
+    images: ["/images/hero-interior.jpg"],
+  },
+};
 
 export default function HomePage() {
   return (
@@ -23,5 +36,5 @@ export default function HomePage() {
       <Footer />
       <ScrollToTop />
     </main>
-  )
+  );
 }

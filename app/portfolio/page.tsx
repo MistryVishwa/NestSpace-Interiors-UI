@@ -110,7 +110,7 @@ export default function PortfolioPage() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-36 pb-24 bg-gradient-to-b from-secondary/50 to-background relative overflow-hidden">
+      <section className="pt-36 pb-24 bg-linear-to-b from-secondary/50 to-background relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--primary)_0%,transparent_50%)] opacity-5" />
         <div className="container mx-auto px-6 lg:px-12 relative">
           <div 
@@ -172,7 +172,7 @@ export default function PortfolioPage() {
                 <div 
                   className={cn(
                     "relative rounded-2xl overflow-hidden image-zoom",
-                    item.size === "tall" ? "aspect-[3/4]" : "aspect-[4/3]"
+                    item.size === "tall" ? "aspect-3/4" : "aspect-4/3"
                   )}
                 >
                   <Image
@@ -183,7 +183,7 @@ export default function PortfolioPage() {
                   />
                   
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-linear-to-t from-foreground/90 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                   
                   {/* Content on Hover */}
                   <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-end translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
@@ -206,7 +206,7 @@ export default function PortfolioPage() {
                   </div>
 
                   {/* Default Label */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-foreground/70 to-transparent group-hover:opacity-0 transition-opacity duration-500">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-linear-to-t from-foreground/70 to-transparent group-hover:opacity-0 transition-opacity duration-500">
                     <span className="text-primary-foreground/60 text-xs font-medium uppercase tracking-wider">
                       {item.category}
                     </span>

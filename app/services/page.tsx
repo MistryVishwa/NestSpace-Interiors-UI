@@ -6,6 +6,13 @@ import { CTASection } from "@/components/home/cta-section"
 import { Home, Building2, UtensilsCrossed, Crown, Check, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Our Design Services",
+  description:
+    "From luxury residential styling to modern corporate office design, explore our full suite of interior architecture services.",
+};
 
 const services = [
   {
@@ -159,7 +166,7 @@ export default function ServicesPage() {
                     </Button>
                   </Link>
                 </div>
-                <div className={`relative aspect-[4/3] rounded-lg overflow-hidden ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+                <div className={`relative aspect-4/3 rounded-lg overflow-hidden ${index % 2 === 1 ? "lg:order-1" : ""}`}>
                   <Image
                     src={service.image}
                     alt={service.title}
@@ -192,14 +199,14 @@ export default function ServicesPage() {
             {process.map((item) => (
               <Card
                 key={item.step}
-                className="relative h-full overflow-hidden rounded-[2rem] border border-border/70 bg-card/95 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
+                className="relative h-full overflow-hidden rounded-4xl border border-border/70 bg-card/95 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
               >
                 <CardContent className="relative flex h-full flex-col p-8 pt-20">
                   <span className="absolute left-6 top-5 font-serif text-5xl md:text-6xl font-bold leading-none text-primary/18">
                     {item.step}
                   </span>
                   <div className="relative z-10 flex h-full flex-col">
-                    <h3 className="font-serif text-2xl font-semibold text-foreground mb-4 min-h-[64px]">
+                    <h3 className="font-serif text-2xl font-semibold text-foreground mb-4 min-h-16">
                       {item.title}
                     </h3>
                     <p className="text-muted-foreground leading-8 text-base">
