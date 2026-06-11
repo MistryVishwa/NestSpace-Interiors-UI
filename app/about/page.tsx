@@ -5,6 +5,13 @@ import { CTASection } from "@/components/home/cta-section"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { Check, Target, Eye, Heart } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Our Studio",
+  description:
+    "Meet the team behind NestSpace. We are a collective of interior designers dedicated to turning your vision into a reality.",
+};
 
 const team = [
   {
