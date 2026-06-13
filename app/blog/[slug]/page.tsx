@@ -5,6 +5,7 @@ import { Calendar, Clock, ArrowLeft } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { CTASection } from "@/components/home/cta-section"
+import { ShareBar } from "@/components/blog/share-bar"
 import { blogPosts, getBlogPostBySlug } from "@/lib/blog-data"
 
 export function generateStaticParams() {
@@ -74,6 +75,7 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
                 <h3 className="font-serif text-2xl font-bold text-foreground mb-3">Final Thought</h3>
                 <p className="text-muted-foreground leading-8 text-base md:text-lg">{post.content.conclusion}</p>
               </div>
+              <ShareBar title={post.title} />
             </div>
           </div>
         </div>
