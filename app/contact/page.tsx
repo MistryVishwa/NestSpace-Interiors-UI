@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react"
+import { CopyButton } from "@/components/copy-button"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -23,24 +24,28 @@ const contactInfo = [
     label: "Email",
     value: "hello@nestspace.com",
     href: "mailto:hello@nestspace.com",
+    copyable: true,
   },
   {
     icon: Phone,
     label: "Phone",
     value: "+1 (234) 567-890",
     href: "tel:+1234567890",
+    copyable: false,
   },
   {
     icon: MapPin,
     label: "Address",
     value: "123 Design Street, Creative District, NY 10001",
     href: "#map",
+    copyable: false,
   },
   {
     icon: Clock,
     label: "Hours",
     value: "Mon - Fri: 9AM - 6PM",
     href: null,
+    copyable: false,
   },
 ]
 
@@ -98,16 +103,21 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">{item.label}</p>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          className="font-medium text-foreground hover:text-primary transition-colors"
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <p className="font-medium text-foreground">{item.value}</p>
-                      )}
+                      <div className="flex items-center gap-1">
+                        {item.href ? (
+                          <a
+                            href={item.href}
+                            className="font-medium text-foreground hover:text-primary transition-colors"
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          <p className="font-medium text-foreground">{item.value}</p>
+                        )}
+                        {item.copyable && (
+                          <CopyButton text={item.value} label="email address" />
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))}
