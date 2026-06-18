@@ -1,10 +1,12 @@
 "use client"
 
+import { useState } from "react"
 import Link from "next/link"
 import { Instagram, Facebook, Twitter, Linkedin, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { cn } from "@/lib/utils"
+import { toast } from "sonner"
 
 const footerLinks = {
   company: [
@@ -36,6 +38,38 @@ const socialLinks = [
 
 export function Footer() {
   const footerReveal = useScrollReveal()
+  const [email, setEmail] = useState("")
+  const [error, setError] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    const trimmedEmail = email.trim()
+    if (!trimmedEmail) {
+      setError("Email is required")
+      return
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(trimmedEmail)) {
+      setError("Please enter a valid email address")
+      return
+    }
+
+    setError(null)
+    setIsSubmitting(true)
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1500))
+      toast.success("Successfully subscribed to our newsletter!")
+      setEmail("")
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <footer className="bg-secondary/30 border-t border-border relative overflow-hidden">
@@ -60,16 +94,37 @@ export function Footer() {
                 Subscribe to our newsletter for design tips, trends, and exclusive updates.
               </p>
             </div>
-            <div className="flex gap-2 w-full lg:w-auto max-w-sm">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 h-10 px-4 rounded-lg bg-card border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-foreground placeholder:text-muted-foreground text-sm"
-              />
-              <Button className="h-10 px-5 bg-primary text-primary-foreground hover:bg-primary/90 shrink-0 text-sm rounded-lg">
-                Subscribe
-              </Button>
-            </div>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full lg:w-auto max-w-sm">
+              <div className="flex gap-2 w-full">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value)
+                    if (error) setError(null)
+                  }}
+                  placeholder="Enter your email"
+                  className={cn(
+                    "flex-1 h-10 px-4 rounded-lg bg-card border outline-none transition-all text-foreground placeholder:text-muted-foreground text-sm",
+                    error 
+                      ? "border-destructive focus:border-destructive focus:ring-2 focus:ring-destructive/20" 
+                      : "border-border focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  )}
+                />
+                <Button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="h-10 px-5 bg-primary text-primary-foreground hover:bg-primary/90 shrink-0 text-sm rounded-lg min-w-[100px]"
+                >
+                  {isSubmitting ? "Subscribing..." : "Subscribe"}
+                </Button>
+              </div>
+              {error && (
+                <p className="text-xs text-destructive text-left font-medium ml-1 animate-in fade-in duration-200">
+                  {error}
+                </p>
+              )}
+            </form>
           </div>
         </div>
 
