@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { useEffect, useState, useCallback, useRef } from "react"
-import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react"
-import { useScrollReveal } from "@/hooks/use-scroll-reveal"
-import { cn } from "@/lib/utils"
+import { useEffect, useState, useCallback, useRef } from "react";
+import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { cn } from "@/lib/utils";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   type CarouselApi,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
 
 const testimonials = [
   {
@@ -52,54 +52,58 @@ const testimonials = [
     rating: 5,
     location: "Boston, MA",
   },
-]
+];
 
-const AUTOPLAY_INTERVAL = 4000
+const AUTOPLAY_INTERVAL = 4000;
 
 export function TestimonialsSection() {
-  const headerReveal = useScrollReveal()
-  const [api, setApi] = useState<CarouselApi>()
-  const [current, setCurrent] = useState(0)
-  const [count, setCount] = useState(0)
-  const isHovered = useRef(false)
+  const headerReveal = useScrollReveal();
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+  const isHovered = useRef(false);
 
   // Detect prefers-reduced-motion
   const prefersReducedMotion =
     typeof window !== "undefined"
       ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      : false
+      : false;
 
   // Sync dot indicators with Embla
   useEffect(() => {
-    if (!api) return
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap())
-    api.on("select", () => setCurrent(api.selectedScrollSnap()))
-  }, [api])
+    if (!api) return;
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+    api.on("select", () => setCurrent(api.selectedScrollSnap()));
+  }, [api]);
 
   // Autoplay — disabled when prefers-reduced-motion is set
   const scrollNext = useCallback(() => {
-    if (!api) return
+    if (!api) return;
     if (api.canScrollNext()) {
-      api.scrollNext()
+      api.scrollNext();
     } else {
-      api.scrollTo(0)
+      api.scrollTo(0);
     }
-  }, [api])
+  }, [api]);
 
   useEffect(() => {
-    if (prefersReducedMotion || !api) return
+    if (prefersReducedMotion || !api) return;
     const interval = setInterval(() => {
-      if (!isHovered.current) scrollNext()
-    }, AUTOPLAY_INTERVAL)
-    return () => clearInterval(interval)
-  }, [api, prefersReducedMotion, scrollNext])
+      if (!isHovered.current) scrollNext();
+    }, AUTOPLAY_INTERVAL);
+    return () => clearInterval(interval);
+  }, [api, prefersReducedMotion, scrollNext]);
 
   return (
     <section
       className="py-16 sm:py-20 lg:py-28 bg-secondary/20 relative overflow-hidden"
-      onMouseEnter={() => { isHovered.current = true }}
-      onMouseLeave={() => { isHovered.current = false }}
+      onMouseEnter={() => {
+        isHovered.current = true;
+      }}
+      onMouseLeave={() => {
+        isHovered.current = false;
+      }}
     >
       {/* Decorative Background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,var(--primary)_0%,transparent_50%)] opacity-3" />
@@ -110,7 +114,7 @@ export function TestimonialsSection() {
           ref={headerReveal.ref}
           className={cn(
             "text-center max-w-2xl mx-auto mb-10 sm:mb-12 lg:mb-14 reveal",
-            headerReveal.isVisible && "visible"
+            headerReveal.isVisible && "visible",
           )}
         >
           <span className="inline-block text-primary font-medium tracking-[0.15em] uppercase text-xs mb-3 sm:mb-4">
@@ -120,7 +124,8 @@ export function TestimonialsSection() {
             What Our Clients Say
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-            We take pride in delivering exceptional results that exceed expectations.
+            We take pride in delivering exceptional results that exceed
+            expectations.
           </p>
         </div>
 
@@ -131,7 +136,7 @@ export function TestimonialsSection() {
           className="w-full"
           aria-label="Client testimonials"
         >
-          <CarouselContent className="-ml-4 sm:-ml-5">
+          <CarouselContent className="-ml-4 sm:-ml-5 pt-6">
             {testimonials.map((testimonial, index) => (
               <CarouselItem
                 key={index}
@@ -146,7 +151,10 @@ export function TestimonialsSection() {
                   {/* Rating */}
                   <div className="flex gap-0.5 mb-4 pt-2">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 text-primary fill-primary" />
+                      <Star
+                        key={i}
+                        className="h-4 w-4 text-primary fill-primary"
+                      />
                     ))}
                   </div>
 
@@ -166,7 +174,9 @@ export function TestimonialsSection() {
                       <p className="font-semibold text-foreground text-sm sm:text-base truncate">
                         {testimonial.name}
                       </p>
-                      <p className="text-xs text-muted-foreground truncate">{testimonial.role}</p>
+                      <p className="text-xs text-muted-foreground truncate">
+                        {testimonial.role}
+                      </p>
                       <p className="text-[10px] text-muted-foreground/70 mt-0.5 truncate">
                         {testimonial.location}
                       </p>
@@ -191,7 +201,11 @@ export function TestimonialsSection() {
           </button>
 
           {/* Dot indicators */}
-          <div className="flex gap-2" role="tablist" aria-label="Testimonial slides">
+          <div
+            className="flex gap-2"
+            role="tablist"
+            aria-label="Testimonial slides"
+          >
             {Array.from({ length: count }).map((_, i) => (
               <button
                 key={i}
@@ -203,7 +217,7 @@ export function TestimonialsSection() {
                   "rounded-full transition-all duration-300",
                   i === current
                     ? "w-6 h-2.5 bg-primary"
-                    : "w-2.5 h-2.5 bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                    : "w-2.5 h-2.5 bg-muted-foreground/30 hover:bg-muted-foreground/60",
                 )}
               />
             ))}
@@ -221,5 +235,5 @@ export function TestimonialsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
