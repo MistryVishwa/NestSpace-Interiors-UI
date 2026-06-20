@@ -3,6 +3,7 @@ import { Inter, Playfair_Display, Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import "./globals.css";
 
 const inter = Inter({
@@ -84,6 +85,7 @@ export default function RootLayout({
           storageKey="nestspace-theme"
         >
           {children}
+          <ScrollToTop/>
           <Toaster richColors position="bottom-right" />
         </ThemeProvider>
         <Analytics />
