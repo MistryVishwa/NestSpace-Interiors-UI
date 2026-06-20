@@ -4,12 +4,21 @@ import { usePathname } from "next/navigation"
 import { toast } from "sonner"
 import { Linkedin, Link2, Share2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 interface ShareBarProps {
   title: string
+  className?: string
+  label?: string
+  contentType?: "article" | "project"
 }
 
-export function ShareBar({ title }: ShareBarProps) {
+export function ShareBar({
+  title,
+  className,
+  label = "Share this article",
+  contentType = "article",
+}: ShareBarProps) {
   const pathname = usePathname()
 
   const getUrl = () =>
@@ -40,7 +49,7 @@ export function ShareBar({ title }: ShareBarProps) {
     try {
       await navigator.clipboard.writeText(url)
       toast.success("Link copied!", {
-        description: "The post URL has been copied to your clipboard.",
+        description: `The ${contentType} URL has been copied to your clipboard.`,
         duration: 3000,
       })
     } catch {
@@ -52,10 +61,10 @@ export function ShareBar({ title }: ShareBarProps) {
   }
 
   return (
-    <div className="mt-12 pt-8 border-t border-border">
+    <div className={cn("mt-12 pt-8 border-t border-border", className)}>
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
         <span className="text-sm font-medium text-muted-foreground shrink-0">
-          Share this article
+          {label}
         </span>
         <div className="flex items-center gap-2">
           <Button

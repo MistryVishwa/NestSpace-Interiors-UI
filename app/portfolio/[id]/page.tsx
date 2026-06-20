@@ -7,6 +7,7 @@ import { CTASection } from "@/components/home/cta-section"
 import { ScrollToTop } from "@/components/scroll-to-top"
 import { ArrowLeft, ArrowRight, Calendar, MapPin, Ruler, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { ShareBar } from "@/components/blog/share-bar"
 
 const projects = {
   "modern-living-room": {
@@ -274,6 +275,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
                 </div>
               </div>
             </div>
+
+            <ShareBar
+              title={project.title}
+              className="mt-0 pt-6 border-t-0"
+              label="Share this project"
+              contentType="project"
+            />
 
             {/* Description */}
             <div className="py-12">
