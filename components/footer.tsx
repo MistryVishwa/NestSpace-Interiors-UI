@@ -95,8 +95,15 @@ export function Footer() {
               </p>
             </div>
             <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full lg:w-auto max-w-sm">
+              <label
+                htmlFor="newsletter-email"
+                className="sr-only"
+              >
+                Email address for newsletter
+              </label>
               <div className="flex gap-2 w-full">
                 <input
+                  id="newsletter-email"
                   type="email"
                   value={email}
                   onChange={(e) => {
