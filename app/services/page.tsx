@@ -7,6 +7,7 @@ import { Home, Building2, UtensilsCrossed, Crown, Check, ArrowRight } from "luci
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Metadata } from 'next'
+import { ServicesNav } from "@/components/services-nav"
 
 export const metadata: Metadata = {
   title: "Our Design Services",
@@ -126,6 +127,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <ServicesNav />
+
       {/* Services List */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
@@ -134,7 +137,7 @@ export default function ServicesPage() {
               <div
                 key={service.id}
                 id={service.id}
-                className={`grid lg:grid-cols-2 gap-12 items-center ${
+                className={`scroll-mt-32 lg:scroll-mt-36 grid lg:grid-cols-2 gap-12 items-center ${
                   index % 2 === 1 ? "lg:flex-row-reverse" : ""
                 }`}
               >
