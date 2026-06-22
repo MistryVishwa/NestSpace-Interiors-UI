@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { ScrollToTop } from "@/components/scroll-to-top"
+import { PrintButton } from "@/components/print-button"
 
 export const metadata = {
   title: "Privacy Policy | NestSpace Interiors",
@@ -16,16 +17,19 @@ export default function PrivacyPolicyPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-12">
           <div className="max-w-3xl mx-auto">
             {/* Header */}
-            <div className="mb-10 sm:mb-12">
+            <div className="mb-10 sm:mb-12 pb-6 border-b border-border">
               <span className="inline-block text-primary font-medium tracking-[0.15em] uppercase text-xs mb-3">
                 Legal
               </span>
               <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
                 Privacy Policy
               </h1>
-              <p className="text-muted-foreground text-sm">
-                Last updated: January 2024
-              </p>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <p className="text-muted-foreground text-sm">
+                  Last updated: January 2024
+                </p>
+                <PrintButton />
+              </div>
             </div>
 
             {/* Content */}
