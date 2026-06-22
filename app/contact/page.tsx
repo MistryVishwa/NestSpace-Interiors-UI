@@ -317,22 +317,19 @@ export default function ContactPage() {
                 Come see our showroom and meet our team in person.
               </p>
             </div>
-            {/* Map Placeholder */}
-            <div className="relative aspect-16/6 rounded-lg overflow-hidden bg-muted">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <p className="font-medium text-foreground">123 Design Street</p>
-                  <p className="text-muted-foreground">Creative District, NY 10001</p>
-                </div>
-              </div>
-              {/* Decorative grid lines */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="h-full w-full" style={{
-                  backgroundImage: 'linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)',
-                  backgroundSize: '50px 50px'
-                }} />
-              </div>
+            {/* Embedded Google Map */}
+            <div className="relative aspect-16/6 rounded-lg overflow-hidden bg-muted shadow-inner">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24194.89157059023!2d-74.01247918731776!3d40.74844040000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c165037%3A0xc48c081e7d8d21f8!2sChelsea%2C+New+York%2C%20NY!5e0!3m2!1sen!2sus!4v1565306692994!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Google Maps: NestSpace Interiors Studio Location"
+                className="w-full h-full grayscale-[10%] hover:grayscale-0 transition-all duration-300"
+              />
             </div>
           </div>
         </div>
