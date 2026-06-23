@@ -8,6 +8,14 @@ import { ScrollToTop } from "@/components/scroll-to-top"
 import { ArrowLeft, ArrowRight, Calendar, MapPin, Ruler, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ShareBar } from "@/components/blog/share-bar"
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
 
 const projects = {
   "modern-living-room": {
@@ -207,8 +215,37 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   const prevProject = currentIndex > 0 ? projectIds[currentIndex - 1] : null
   const nextProject = currentIndex < projectIds.length - 1 ? projectIds[currentIndex + 1] : null
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nestspace-interiors.vercel.app/",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Portfolio",
+        "item": "https://nestspace-interiors.vercel.app/portfolio",
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": project.title,
+        "item": `https://nestspace-interiors.vercel.app/portfolio/${id}`,
+      },
+    ],
+  }
+
   return (
     <main className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+      />
       <Navigation />
       
       {/* Hero Section */}
@@ -231,6 +268,26 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
           <div className="max-w-4xl mx-auto">
             {/* Breadcrumb */}
             <div className="mb-6">
+              <Breadcrumb className="mb-4">
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink asChild>
+                      <Link href="/">Home</Link>
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbLink asChild>
+                      <Link href="/portfolio">Portfolio</Link>
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage>{project.title}</BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+
               <Link href="/portfolio" className="inline-flex items-center text-primary hover:text-primary/80">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Portfolio
