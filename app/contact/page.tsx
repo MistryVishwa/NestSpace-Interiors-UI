@@ -49,21 +49,85 @@ const contactInfo = [
   },
 ]
 
+type FormErrors = {
+  firstName?: string
+  lastName?: string
+  email?: string
+  phone?: string
+  service?: string
+  budget?: string
+  message?: string
+}
+
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [service, setService] = useState("")
   const [budget, setBudget] = useState("")
-  const [errors, setErrors] = useState<{ service?: string; budget?: string }>({})
+  const [errors, setErrors] = useState<FormErrors>({})
   const formRef = useRef<HTMLFormElement>(null)
+
+  const clearError = (field: keyof FormErrors) => {
+    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    // Validate Select fields (native inputs are handled by the browser `required`)
-    const newErrors: { service?: string; budget?: string } = {}
+    const form = formRef.current!
+    const firstName = (form.elements.namedItem("firstName") as HTMLInputElement).value.trim()
+    const lastName  = (form.elements.namedItem("lastName")  as HTMLInputElement).value.trim()
+    const email     = (form.elements.namedItem("email")     as HTMLInputElement).value.trim()
+    const phone     = (form.elements.namedItem("phone")     as HTMLInputElement).value.trim()
+    const message   = (form.elements.namedItem("message")   as HTMLTextAreaElement).value.trim()
+
+    const newErrors: FormErrors = {}
+
+    // First name
+    if (!firstName) {
+      newErrors.firstName = "First name is required."
+    } else if (firstName.length <= 2) {
+      newErrors.firstName = "First name must be more than 2 characters."
+    }
+
+    // Last name
+    if (!lastName) {
+      newErrors.lastName = "Last name is required."
+    } else if (lastName.length <= 1) {
+      newErrors.lastName = "Last name must be more than 1 character."
+    }
+
+    // Email
+    if (!email) {
+      newErrors.email = "Email is required."
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Please enter a valid email address."
+    }
+
+    // Phone — now mandatory
+    if (!phone) {
+      newErrors.phone = "Phone number is required."
+    } else {
+      const digitsOnly = phone.replace(/\D/g, "")
+      if (digitsOnly.length < 7 || digitsOnly.length > 15) {
+        newErrors.phone = "Phone number must be between 7 and 15 digits."
+      } else if (!/^\+?[\d\s\-().]+$/.test(phone)) {
+        newErrors.phone = "Phone number contains invalid characters."
+      }
+    }
+
+    // Service
     if (!service) newErrors.service = "Please select a service."
+
+    // Budget
     if (!budget) newErrors.budget = "Please select a budget range."
+
+    // Message
+    if (!message) {
+      newErrors.message = "Message is required."
+    } else if (message.length < 10) {
+      newErrors.message = "Message must be at least 10 characters."
+    }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
@@ -73,21 +137,10 @@ export default function ContactPage() {
     setErrors({})
     setIsSubmitting(true)
 
-    // Collect all form field values
-    const form = formRef.current!
-    const formData = {
-      firstName: (form.elements.namedItem("firstName") as HTMLInputElement).value,
-      lastName:  (form.elements.namedItem("lastName")  as HTMLInputElement).value,
-      email:     (form.elements.namedItem("email")     as HTMLInputElement).value,
-      phone:     (form.elements.namedItem("phone")     as HTMLInputElement).value,
-      service,
-      budget,
-      message:   (form.elements.namedItem("message")   as HTMLTextAreaElement).value,
-    }
+    const formData = { firstName, lastName, email, phone, service, budget, message }
     console.log("Contact form submission:", formData)
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
+    await new Promise((resolve) => setTimeout(resolve, 1500))
     setIsSubmitting(false)
     setIsSubmitted(true)
   }
@@ -95,7 +148,7 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-secondary/30">
         <div className="container mx-auto px-4 lg:px-8">
@@ -167,67 +220,95 @@ export default function ContactPage() {
                         Message Sent!
                       </h3>
                       <p className="text-muted-foreground mb-6">
-                        Thank you for reaching out. We'll get back to you within 24-48 hours.
+                        Thank you for reaching out. We'll get back to you within 24–48 hours.
                       </p>
-                      <Button
-                        onClick={() => setIsSubmitted(false)}
-                        variant="outline"
-                      >
+                      <Button onClick={() => setIsSubmitted(false)} variant="outline">
                         Send Another Message
                       </Button>
                     </div>
                   ) : (
-                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                    <form ref={formRef} onSubmit={handleSubmit} noValidate className="space-y-6">
+
+                      {/* First Name / Last Name */}
                       <div className="grid md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <Label htmlFor="firstName">First Name</Label>
+                          <Label htmlFor="firstName">
+                            First Name <span className="text-destructive">*</span>
+                          </Label>
                           <Input
                             id="firstName"
+                            name="firstName"
                             placeholder="John"
-                            required
-                            className="bg-background"
+                            className={`bg-background${errors.firstName ? " border-destructive focus-visible:ring-destructive" : ""}`}
+                            onChange={() => clearError("firstName")}
                           />
+                          {errors.firstName && (
+                            <p className="text-sm text-destructive">{errors.firstName}</p>
+                          )}
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="lastName">Last Name</Label>
+                          <Label htmlFor="lastName">
+                            Last Name <span className="text-destructive">*</span>
+                          </Label>
                           <Input
                             id="lastName"
+                            name="lastName"
                             placeholder="Doe"
-                            required
-                            className="bg-background"
+                            className={`bg-background${errors.lastName ? " border-destructive focus-visible:ring-destructive" : ""}`}
+                            onChange={() => clearError("lastName")}
                           />
+                          {errors.lastName && (
+                            <p className="text-sm text-destructive">{errors.lastName}</p>
+                          )}
                         </div>
                       </div>
 
+                      {/* Email / Phone */}
                       <div className="grid md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <Label htmlFor="email">Email</Label>
+                          <Label htmlFor="email">
+                            Email <span className="text-destructive">*</span>
+                          </Label>
                           <Input
                             id="email"
+                            name="email"
                             type="email"
                             placeholder="john@example.com"
-                            required
-                            className="bg-background"
+                            className={`bg-background${errors.email ? " border-destructive focus-visible:ring-destructive" : ""}`}
+                            onChange={() => clearError("email")}
                           />
+                          {errors.email && (
+                            <p className="text-sm text-destructive">{errors.email}</p>
+                          )}
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="phone">Phone</Label>
+                          <Label htmlFor="phone">
+                            Phone <span className="text-destructive">*</span>
+                          </Label>
                           <Input
                             id="phone"
+                            name="phone"
                             type="tel"
                             placeholder="+1 (234) 567-890"
-                            className="bg-background"
+                            className={`bg-background${errors.phone ? " border-destructive focus-visible:ring-destructive" : ""}`}
+                            onChange={() => clearError("phone")}
                           />
+                          {errors.phone && (
+                            <p className="text-sm text-destructive">{errors.phone}</p>
+                          )}
                         </div>
                       </div>
 
+                      {/* Service */}
                       <div className="space-y-2">
-                        <Label htmlFor="service">Service Interested In *</Label>
+                        <Label htmlFor="service">
+                          Service Interested In <span className="text-destructive">*</span>
+                        </Label>
                         <Select
                           value={service}
                           onValueChange={(val) => {
                             setService(val)
-                            if (errors.service) setErrors(prev => ({ ...prev, service: undefined }))
+                            clearError("service")
                           }}
                         >
                           <SelectTrigger
@@ -249,13 +330,16 @@ export default function ContactPage() {
                         )}
                       </div>
 
+                      {/* Budget */}
                       <div className="space-y-2">
-                        <Label htmlFor="budget">Estimated Budget *</Label>
+                        <Label htmlFor="budget">
+                          Estimated Budget <span className="text-destructive">*</span>
+                        </Label>
                         <Select
                           value={budget}
                           onValueChange={(val) => {
                             setBudget(val)
-                            if (errors.budget) setErrors(prev => ({ ...prev, budget: undefined }))
+                            clearError("budget")
                           }}
                         >
                           <SelectTrigger
@@ -266,9 +350,9 @@ export default function ContactPage() {
                           </SelectTrigger>
                           <SelectContent>
                             <SelectItem value="under-25k">Under $25,000</SelectItem>
-                            <SelectItem value="25k-50k">$25,000 - $50,000</SelectItem>
-                            <SelectItem value="50k-100k">$50,000 - $100,000</SelectItem>
-                            <SelectItem value="100k-250k">$100,000 - $250,000</SelectItem>
+                            <SelectItem value="25k-50k">$25,000 – $50,000</SelectItem>
+                            <SelectItem value="50k-100k">$50,000 – $100,000</SelectItem>
+                            <SelectItem value="100k-250k">$100,000 – $250,000</SelectItem>
                             <SelectItem value="over-250k">Over $250,000</SelectItem>
                           </SelectContent>
                         </Select>
@@ -277,16 +361,27 @@ export default function ContactPage() {
                         )}
                       </div>
 
+                      {/* Message */}
                       <div className="space-y-2">
-                        <Label htmlFor="message">Message</Label>
+                        <Label htmlFor="message">
+                          Message <span className="text-destructive">*</span>
+                        </Label>
                         <Textarea
                           id="message"
+                          name="message"
                           placeholder="Tell us about your project..."
                           rows={5}
-                          required
-                          className="bg-background resize-none"
+                          className={`bg-background resize-none${errors.message ? " border-destructive focus-visible:ring-destructive" : ""}`}
+                          onChange={() => clearError("message")}
                         />
+                        {errors.message && (
+                          <p className="text-sm text-destructive">{errors.message}</p>
+                        )}
                       </div>
+
+                      <p className="text-xs text-muted-foreground">
+                        Fields marked <span className="text-destructive">*</span> are required.
+                      </p>
 
                       <Button
                         type="submit"
@@ -317,7 +412,6 @@ export default function ContactPage() {
                 Come see our showroom and meet our team in person.
               </p>
             </div>
-            {/* Embedded Google Map */}
             <div className="relative aspect-16/6 rounded-lg overflow-hidden bg-muted shadow-inner">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24194.89157059023!2d-74.01247918731776!3d40.74844040000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c165037%3A0xc48c081e7d8d21f8!2sChelsea%2C+New+York%2C%20NY!5e0!3m2!1sen!2sus!4v1565306692994!5m2!1sen!2sus"
@@ -349,7 +443,7 @@ export default function ContactPage() {
               {[
                 {
                   q: "How long does a typical project take?",
-                  a: "Project timelines vary based on scope. A single room typically takes 4-6 weeks, while whole-home projects can take 3-6 months from concept to completion.",
+                  a: "Project timelines vary based on scope. A single room typically takes 4–6 weeks, while whole-home projects can take 3–6 months from concept to completion.",
                 },
                 {
                   q: "Do you work with clients remotely?",
