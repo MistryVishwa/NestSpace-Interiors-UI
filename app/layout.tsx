@@ -3,6 +3,7 @@ import { Inter, Playfair_Display, Poppins } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { ScrollToTop } from "@/components/scroll-to-top";
+import { MobileCtaButton } from "@/components/mobile-cta-button";
 import { CookieBanner } from "@/components/cookie-banner";
 import { ConditionalAnalytics } from "@/components/conditional-analytics";
 import "./globals.css";
@@ -87,6 +88,7 @@ export default function RootLayout({
         >
           {children}
           <ScrollToTop/>
+          <MobileCtaButton />
           <Toaster richColors position="bottom-right" />
           <CookieBanner />
         </ThemeProvider>
