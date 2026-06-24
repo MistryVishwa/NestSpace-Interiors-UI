@@ -103,22 +103,24 @@ export function PortfolioSection() {
         {/* Masonry Portfolio Grid */}
         <div className="masonry-grid">
           {portfolioItems.map((item, index) => (
-            <Link
-              key={item.id}
-              href={`/portfolio/${item.id}`}
-              ref={setRef(index)}
-              className={cn(
-                "masonry-item block group relative rounded-xl sm:rounded-2xl overflow-hidden image-zoom reveal-scale",
-                visibleItems[index] && "visible",
-                item.size === "tall" && "aspect-3/4",
-                item.size === "medium" && "aspect-4/3",
-              )}
-              style={{ transitionDelay: `${index * 80}ms` }}
-            >
+           <Link
+  key={item.id}
+  href={`/portfolio/${item.id}`}
+  aria-label={`View detailed project: ${item.title}`} // Added for Accessibility
+  ref={setRef(index)}
+  className={cn(
+    "masonry-item block group relative rounded-xl sm:rounded-2xl overflow-hidden image-zoom reveal-scale",
+    visibleItems[index] && "visible",
+    item.size === "tall" && "aspect-3/4",
+    item.size === "medium" && "aspect-4/3",
+  )}
+  style={{ transitionDelay: `${index * 80}ms` }}
+>
               <Image
                 src={item.image}
                 alt={item.title}
                 fill
+                priority={index < 2} // Added for Performance (loads first 2 images instantly)
                 className="object-cover"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 style={{ viewTransitionName: `project-${item.id}` } as React.CSSProperties}
