@@ -14,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { RecentlyViewedStrip } from "./recently-viewed-strip"
 
 const ITEMS_PER_PAGE = 4
 
@@ -81,6 +82,9 @@ export function PortfolioGallery({ items, categories }: PortfolioGalleryProps) {
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-6 lg:px-12">
+        {/* Recently Viewed Strip */}
+        <RecentlyViewedStrip allItems={items} />
+
         {/* Filters Panel */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-6 border-b border-border/40">
           {/* Category Tabs */}

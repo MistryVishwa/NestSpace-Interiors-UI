@@ -17,6 +17,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { projects, type ProjectId } from "@/lib/portfolio-data"
+import { RecordProjectView } from "./record-project-view"
 
 
 export function generateStaticParams() {
@@ -67,6 +68,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
       />
+      <RecordProjectView id={id} />
       <Navigation />
       
       {/* Hero Section */}

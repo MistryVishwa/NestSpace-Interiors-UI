@@ -538,6 +538,16 @@
   );
 }
 
+/* Hide scrollbar while keeping scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
 /* Print Stylesheet */
 @media print {
   /* Hide navigation, footer, scroll-to-top, buttons, and other interactive or decorative components */
