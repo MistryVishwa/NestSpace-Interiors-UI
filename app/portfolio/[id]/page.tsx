@@ -16,6 +16,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+import { RecordProjectView } from "./record-project-view"
 
 const projects = {
   "modern-living-room": {
@@ -246,6 +247,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
       />
+      <RecordProjectView id={id} />
       <Navigation />
       
       {/* Hero Section */}
