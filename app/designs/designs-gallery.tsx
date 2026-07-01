@@ -172,10 +172,16 @@ export function DesignsGallery({ designs, categories }: DesignsGalleryProps) {
         >
           {/* Close button */}
           <button
+<<<<<<< HEAD
             ref={closeBtnRef}
             aria-label="Close lightbox"
             className="absolute top-6 right-6 w-12 h-12 rounded-full bg-background/10 backdrop-blur-sm flex items-center justify-center text-background hover:bg-background/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-background/60"
             onClick={closeLightbox}
+=======
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-background/10 backdrop-blur-sm flex items-center justify-center text-background hover:bg-background/20 transition-colors"
+            onClick={() => setLightboxImage(null)}
+            aria-label="Close lightbox"
+>>>>>>> 3174a43 (feat: improve accessibility for icon-only controls)
           >
             <X className="h-6 w-6" />
           </button>
