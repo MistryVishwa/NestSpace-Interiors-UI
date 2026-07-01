@@ -57,6 +57,7 @@ export function Navigation() {
           <Link 
             href="/" 
             className="flex items-center gap-2 sm:gap-3 group"
+            aria-label="NestSpace Home"
           >
             <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg sm:rounded-xl bg-primary flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
               <span className="font-serif text-base sm:text-lg font-bold text-primary-foreground">N</span>
