@@ -37,7 +37,7 @@ const socialLinks = [
 ]
 
 export function Footer() {
-  const footerReveal = useScrollReveal()
+  const { ref: footerRef, isVisible: footerVisible } = useScrollReveal()
   const [email, setEmail] = useState("")
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -79,10 +79,10 @@ export function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative">
         {/* Newsletter Section */}
         <div 
-          ref={footerReveal.ref}
+          ref={footerRef}
           className={cn(
             "py-8 sm:py-10 lg:py-12 border-b border-border reveal",
-            footerReveal.isVisible && "visible"
+            footerVisible && "visible"
           )}
         >
           <div className="flex flex-col lg:flex-row items-center justify-between gap-5 sm:gap-6">

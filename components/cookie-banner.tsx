@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { startTransition, useEffect, useState } from "react"
 import Link from "next/link"
 import { Cookie } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -11,7 +11,7 @@ export function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    setIsMounted(true)
+    startTransition(() => setIsMounted(true))
 
     const getCookie = (name: string) => {
       const nameEQ = name + "="
@@ -28,7 +28,7 @@ export function CookieBanner() {
 
     // Show banner immediately if no consent - no delay for GDPR compliance
     if (!consent) {
-      setIsVisible(true)
+      startTransition(() => setIsVisible(true))
     }
   }, [])
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { startTransition, useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight, Clock } from "lucide-react"
@@ -22,8 +22,10 @@ export function RecentlyViewedStrip({ allItems }: RecentlyViewedStripProps) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setRecentIds(getRecentlyViewed())
-    setMounted(true)
+    startTransition(() => {
+      setRecentIds(getRecentlyViewed())
+      setMounted(true)
+    })
   }, [getRecentlyViewed])
 
   // Don't render until client-side hydration is complete

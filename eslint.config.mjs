@@ -25,18 +25,6 @@ const eslintConfig = [
         version: "detect",
       },
     },
-    rules: {
-      // React 19 compiler rules introduced in eslint-config-next@16.
-      // Disabled while the existing codebase adopts these patterns incrementally.
-      // See: https://react.dev/reference/rules
-      "react-hooks/refs": "off",
-      "react-hooks/set-state-in-effect": "off",
-      "react-hooks/purity": "off",
-
-      // Pre-existing JSX content uses bare apostrophes throughout the codebase.
-      // Disabling rather than mass-editing content files out of scope for this fix.
-      "react/no-unescaped-entities": "off",
-    },
   },
 ]
 

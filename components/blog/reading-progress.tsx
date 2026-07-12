@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { startTransition, useEffect, useState } from "react"
 
 export function ReadingProgress() {
   const [progress, setProgress] = useState(0)
@@ -30,7 +30,7 @@ export function ReadingProgress() {
 
     // Detect prefers-reduced-motion
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
-    setPrefersReducedMotion(mediaQuery.matches)
+    startTransition(() => setPrefersReducedMotion(mediaQuery.matches))
 
     const handleMotionChange = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches)

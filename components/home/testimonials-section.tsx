@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { startTransition, useEffect, useState, useCallback, useRef } from "react";
 import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 import { cn } from "@/lib/utils";
@@ -57,7 +57,7 @@ const testimonials = [
 const AUTOPLAY_INTERVAL = 4000;
 
 export function TestimonialsSection() {
-  const headerReveal = useScrollReveal();
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
@@ -72,32 +72,29 @@ export function TestimonialsSection() {
   // Sync dot indicators with Embla
   useEffect(() => {
     if (!api) return;
-    setCount(api.scrollSnapList().length);
-    setCurrent(api.selectedScrollSnap());
+    startTransition(() => {
+      setCount(api.scrollSnapList().length);
+      setCurrent(api.selectedScrollSnap());
+    });
     api.on("select", () => setCurrent(api.selectedScrollSnap()));
   }, [api]);
 
   // Autoplay — disabled when prefers-reduced-motion is set
-  const scrollNext = useCallback(() => {
-    if (!api) return;
-    if (api.canScrollNext()) {
-      api.scrollNext();
-    } else {
-      api.scrollTo(0);
-    }
-  }, [api]);
-
   useEffect(() => {
-    if (prefersReducedMotion || !api) return;
-    const interval = setInterval(() => {
-      if (!isHovered.current) scrollNext();
+    if (!api || prefersReducedMotion) return;
+
+    const intervalId = setInterval(() => {
+      if (!isHovered.current) {
+        api.scrollNext();
+      }
     }, AUTOPLAY_INTERVAL);
-    return () => clearInterval(interval);
-  }, [api, prefersReducedMotion, scrollNext]);
+
+    return () => clearInterval(intervalId);
+  }, [api, prefersReducedMotion]);
 
   return (
     <section
-      className="py-16 sm:py-20 lg:py-28 bg-secondary/20 relative overflow-hidden"
+      className="py-16 sm:py-20 lg:py-28 bg-secondary/30 relative overflow-hidden"
       onMouseEnter={() => {
         isHovered.current = true;
       }}
@@ -111,10 +108,10 @@ export function TestimonialsSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative">
         {/* Header */}
         <div
-          ref={headerReveal.ref}
+          ref={headerRef}
           className={cn(
             "text-center max-w-2xl mx-auto mb-10 sm:mb-12 lg:mb-14 reveal",
-            headerReveal.isVisible && "visible",
+            headerVisible && "visible",
           )}
         >
           <span className="inline-block text-primary font-medium tracking-[0.15em] uppercase text-xs mb-3 sm:mb-4">

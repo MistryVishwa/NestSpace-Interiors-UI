@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 
 interface UseScrollRevealOptions {
   threshold?: number
@@ -12,33 +12,42 @@ export function useScrollReveal<T extends HTMLElement = HTMLDivElement>(
   options: UseScrollRevealOptions = {}
 ) {
   const { threshold = 0.1, rootMargin = "0px 0px -50px 0px", once = true } = options
-  const ref = useRef<T>(null)
   const [isVisible, setIsVisible] = useState(false)
+  // Store the DOM node in state so the effect below reacts to mount/unmount.
+  // Deliberately no useRef: if this hook called useRef(), the react-hooks/refs rule
+  // would mark the returned { ref, isVisible } object as ref-tainted and flag every
+  // property access on it in consumer components during render.
+  const [element, setElement] = useState<T | null>(null)
+
+  // Callback ref — React invokes this with the DOM node on mount and null on unmount.
+  // Storing the element in state (above) causes the effect below to run and wire up
+  // (or tear down) the IntersectionObserver.
+  const ref = useCallback((el: T | null) => {
+    setElement(el)
+  }, [])
 
   useEffect(() => {
-    const element = ref.current
     if (!element) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true)
-          if (once) {
-            observer.unobserve(element)
-          }
+          if (once) observer.unobserve(element)
         } else if (!once) {
           setIsVisible(false)
         }
       },
       { threshold, rootMargin }
     )
-
     observer.observe(element)
     return () => observer.disconnect()
-  }, [threshold, rootMargin, once])
+  }, [element, threshold, rootMargin, once])
 
   return { ref, isVisible }
 }
+
+
 
 export function useScrollRevealMany<T extends HTMLElement = HTMLElement>(
   count: number,

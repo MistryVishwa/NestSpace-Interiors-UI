@@ -7,11 +7,11 @@ import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { cn } from "@/lib/utils"
 
 export function CTASection() {
-  const sectionReveal = useScrollReveal()
+  const { ref, isVisible } = useScrollReveal()
 
   return (
     <section
-      ref={sectionReveal.ref}
+      ref={ref}
       className="py-16 sm:py-20 lg:py-24 bg-foreground text-background relative overflow-hidden"
     >
       {/* Decorative Elements */}
@@ -25,7 +25,7 @@ export function CTASection() {
         <div
           className={cn(
             "max-w-3xl mx-auto text-center reveal",
-            sectionReveal.isVisible && "visible",
+            isVisible && "visible",
           )}
         >
           {/* Badge */}

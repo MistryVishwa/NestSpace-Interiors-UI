@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { startTransition, useEffect, useState } from "react"
 import { useScrollReveal } from "@/hooks/use-scroll-reveal"
 import { cn } from "@/lib/utils"
 import { Award, Users, Briefcase, Clock } from "lucide-react"
@@ -68,18 +68,18 @@ function AnimatedCounter({ value, suffix, shouldAnimate }: { value: number; suff
 }
 
 export function StatsSection() {
-  const sectionReveal = useScrollReveal()
+  const { ref: sectionRef, isVisible: sectionVisible } = useScrollReveal()
   const [hasAnimated, setHasAnimated] = useState(false)
 
   useEffect(() => {
-    if (sectionReveal.isVisible && !hasAnimated) {
-      setHasAnimated(true)
+    if (sectionVisible && !hasAnimated) {
+      startTransition(() => setHasAnimated(true))
     }
-  }, [sectionReveal.isVisible, hasAnimated])
+  }, [sectionVisible, hasAnimated])
 
   return (
     <section 
-      ref={sectionReveal.ref}
+      ref={sectionRef}
       className="py-14 sm:py-16 lg:py-20 relative overflow-hidden"
     >
       {/* Premium Background */}
@@ -93,7 +93,7 @@ export function StatsSection() {
         <div 
           className={cn(
             "grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 reveal",
-            sectionReveal.isVisible && "visible"
+            sectionVisible && "visible"
           )}
         >
           {stats.map((stat, index) => (

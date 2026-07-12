@@ -31,7 +31,7 @@ export function Navigation() {
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
-    setMounted(true)
+    React.startTransition(() => setMounted(true))
   }, [])
 
   React.useEffect(() => {

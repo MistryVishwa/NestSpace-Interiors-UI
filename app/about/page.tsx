@@ -77,7 +77,7 @@ export default function AboutPage() {
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
                 Founded in 2009, NestSpace Interiors has been at the forefront
                 of luxury interior design, transforming spaces into personalized
-                sanctuaries that reflect our clients' unique personalities and
+                sanctuaries that reflect our clients&apos; unique personalities and
                 lifestyles.
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed">
@@ -122,9 +122,9 @@ export default function AboutPage() {
                 lives.
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                Over the years, we've grown from a two-person team to a
+                Over the years, we&apos;ve grown from a two-person team to a
                 full-service design firm, completing over 500 projects across
-                residential and commercial sectors. What hasn't changed is our
+                residential and commercial sectors. What hasn&apos;t changed is our
                 commitment to personalized service and our passion for creating
                 spaces that tell a story.
               </p>
