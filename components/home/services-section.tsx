@@ -42,7 +42,7 @@ const services = [
 ]
 
 export function ServicesSection() {
-  const headerReveal = useScrollReveal()
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal()
   const { setRef, visibleItems } = useScrollRevealMany(services.length)
 
   return (
@@ -54,10 +54,10 @@ export function ServicesSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative">
         {/* Section Header */}
         <div 
-          ref={headerReveal.ref}
+          ref={headerRef}
           className={cn(
             "text-center max-w-3xl mx-auto mb-10 sm:mb-12 lg:mb-16 reveal",
-            headerReveal.isVisible && "visible"
+            headerVisible && "visible"
           )}
         >
           <span className="inline-block text-primary font-medium tracking-[0.15em] uppercase text-xs mb-3 sm:mb-4">

@@ -56,7 +56,7 @@ const portfolioItems = [
 ];
 
 export function PortfolioSection() {
-  const headerReveal = useScrollReveal();
+  const { ref: headerRef, isVisible: headerVisible } = useScrollReveal();
   const { setRef, visibleItems } = useScrollRevealMany<HTMLAnchorElement>(portfolioItems.length);
 
   return (
@@ -68,10 +68,10 @@ export function PortfolioSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative">
         {/* Header */}
         <div
-          ref={headerReveal.ref}
+          ref={headerRef}
           className={cn(
             "flex flex-col lg:flex-row lg:items-end justify-between gap-5 sm:gap-6 lg:gap-8 mb-10 sm:mb-12 lg:mb-14 reveal",
-            headerReveal.isVisible && "visible",
+            headerVisible && "visible",
           )}
         >
           <div className="max-w-2xl">

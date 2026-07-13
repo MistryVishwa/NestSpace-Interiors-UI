@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { startTransition, useEffect, useState } from "react"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
 
@@ -21,7 +21,7 @@ export function ConditionalAnalytics() {
   const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    setIsClient(true)
+    startTransition(() => setIsClient(true))
     const checkConsent = () => {
       const stored = localStorage.getItem("nestspace-cookie-consent")
       const cookie = getCookieConsent()

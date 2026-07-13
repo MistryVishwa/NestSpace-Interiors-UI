@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useCallback, useEffect } from "react"
+import { startTransition, useState, useRef, useCallback, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Navigation } from "@/components/navigation"
@@ -27,7 +27,7 @@ export default function BlogPage() {
 
   // Sync local input when URL search param changes externally (e.g., browser Back)
   useEffect(() => {
-    setInputValue(search)
+    startTransition(() => setInputValue(search))
   }, [search])
 
   const handleFilterChange = (cat: string) => {

@@ -181,7 +181,7 @@ export default function ContactPage() {
               Contact Us
             </p>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
-              Let's Start Your Project
+              Let&apos;s Start Your Project
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed">
               Ready to transform your space? Get in touch with our team to schedule a consultation.
@@ -200,7 +200,7 @@ export default function ContactPage() {
                 Get in Touch
               </h2>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                Have a question or ready to start your project? We'd love to hear from you. Reach out through any of the channels below.
+                Have a question or ready to start your project? We&apos;d love to hear from you. Reach out through any of the channels below.
               </p>
               <div className="space-y-6">
                 {contactInfo.map((item) => (
@@ -244,7 +244,7 @@ export default function ContactPage() {
                         Message Sent!
                       </h3>
                       <p className="text-muted-foreground mb-6">
-                        Thank you for reaching out. We'll get back to you within 24–48 hours.
+                        Thank you for reaching out. We&apos;ll get back to you within 24–48 hours.
                       </p>
                       <Button onClick={() => setIsSubmitted(false)} variant="outline">
                         Send Another Message
