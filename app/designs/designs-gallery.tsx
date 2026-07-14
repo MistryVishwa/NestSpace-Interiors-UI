@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react"
+import { X, ZoomIn, ChevronLeft, ChevronRight, Search } from "lucide-react"
 
 export interface DesignItem {
   id: number
@@ -101,63 +101,81 @@ export function DesignsGallery({ designs, categories }: DesignsGalleryProps) {
             ))}
           </div>
 
-          {/* Masonry Grid */}
-          <div
-            className={cn(
-              "masonry-grid transition-opacity duration-200",
-              isTransitioning ? "opacity-0" : "opacity-100"
-            )}
-          >
-            {filteredDesigns.map((design, index) => (
+          {/* Masonry Grid or Empty State */}
+          {filteredDesigns.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-24 gap-4 text-center w-full animate-in fade-in zoom-in duration-300">
+              <div className="rounded-full bg-muted p-5 mb-2">
+                <Search className="h-8 w-8 text-muted-foreground" />
+              </div>
+              <h3 className="font-serif text-xl font-semibold text-foreground">No designs found</h3>
+              <p className="text-muted-foreground text-sm max-w-xs">
+                No designs match your active category filter. Try selecting a different category.
+              </p>
+              <Button onClick={() => handleFilterChange("All")} variant="outline" className="mt-2 rounded-full">
+                Reset Filters
+              </Button>
+            </div>
+          ) : (
+            <>
+              {/* Masonry Grid */}
               <div
-                key={design.id}
-                className="masonry-item group cursor-pointer"
-                onClick={() => setLightboxIndex(index)}
+                className={cn(
+                  "masonry-grid transition-opacity duration-200",
+                  isTransitioning ? "opacity-0" : "opacity-100"
+                )}
               >
-                <div
-                  className={cn(
-                    "relative rounded-2xl overflow-hidden image-zoom",
-                    design.size === "tall"
-                      ? "aspect-3/4"
-                      : design.size === "wide"
-                        ? "aspect-16/10"
-                        : "aspect-4/3"
-                  )}
-                >
-                  <Image
-                    src={design.image}
-                    alt={design.title}
-                    fill
-                    className="object-cover"
-                  />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-linear-to-t from-foreground/90 via-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                {filteredDesigns.map((design, index) => (
+                  <div
+                    key={design.id}
+                    className="masonry-item group cursor-pointer"
+                    onClick={() => setLightboxIndex(index)}
+                  >
+                    <div
+                      className={cn(
+                        "relative rounded-2xl overflow-hidden image-zoom",
+                        design.size === "tall"
+                          ? "aspect-3/4"
+                          : design.size === "wide"
+                            ? "aspect-16/10"
+                            : "aspect-4/3"
+                      )}
+                    >
+                      <Image
+                        src={design.image}
+                        alt={design.title}
+                        fill
+                        className="object-cover"
+                      />
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-linear-to-t from-foreground/90 via-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
-                  {/* Content */}
-                  <div className="absolute inset-0 p-6 flex flex-col justify-end translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    <span className="text-primary-foreground/70 text-xs font-medium uppercase tracking-wider mb-2">
-                      {design.category}
-                    </span>
-                    <div className="flex items-end justify-between gap-4">
-                      <h3 className="text-primary-foreground font-serif text-xl font-semibold">
-                        {design.title}
-                      </h3>
-                      <div className="w-10 h-10 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
-                        <ZoomIn className="h-4 w-4 text-primary-foreground" />
+                      {/* Content */}
+                      <div className="absolute inset-0 p-6 flex flex-col justify-end translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <span className="text-primary-foreground/70 text-xs font-medium uppercase tracking-wider mb-2">
+                          {design.category}
+                        </span>
+                        <div className="flex items-end justify-between gap-4">
+                          <h3 className="text-primary-foreground font-serif text-xl font-semibold">
+                            {design.title}
+                          </h3>
+                          <div className="w-10 h-10 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                            <ZoomIn className="h-4 w-4 text-primary-foreground" />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
 
-          {/* Results Count */}
-          <div className="text-center mt-16">
-            <span className="inline-block px-6 py-3 rounded-full bg-muted text-muted-foreground text-sm">
-              Showing {filteredDesigns.length} of {designs.length} designs
-            </span>
-          </div>
+              {/* Results Count */}
+              <div className="text-center mt-16">
+                <span className="inline-block px-6 py-3 rounded-full bg-muted text-muted-foreground text-sm">
+                  Showing {filteredDesigns.length} of {designs.length} designs
+                </span>
+              </div>
+            </>
+          )}
         </div>
       </section>
 
