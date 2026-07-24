@@ -54,8 +54,8 @@ export function FavoriteButton({
         aria-pressed={active}
         className={cn(
           "inline-flex items-center justify-center rounded-full transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-          "w-10 h-10 bg-background/80 hover:bg-background backdrop-blur-md shadow-md text-foreground hover:scale-110 active:scale-95",
-          active && "text-rose-500 hover:text-rose-600 bg-background/95",
+          "w-10 h-10 bg-background/90 hover:bg-background backdrop-blur-xl border border-border/80 shadow-lg text-foreground hover:scale-110 active:scale-95",
+          active && "text-rose-500 hover:text-rose-600 bg-background border-rose-500/30 shadow-rose-500/10",
           className
         )}
       >
@@ -63,7 +63,7 @@ export function FavoriteButton({
           className={cn(
             iconSizes[size],
             "transition-all duration-300",
-            active ? "fill-rose-500 text-rose-500 scale-110" : "text-foreground/80 hover:text-foreground"
+            active ? "fill-rose-500 text-rose-500 scale-110" : "text-foreground/70 hover:text-foreground"
           )}
         />
         {showLabel && (
