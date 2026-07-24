@@ -16,6 +16,7 @@ const footerLinks = {
     { href: "/collections", label: "Collections" },
     { href: "/cost-estimator", label: "Cost Estimator" },
     { href: "/room-planner", label: "Room Planner" },
+    { href: "/mood-board", label: "Mood Board" },
     { href: "/blog", label: "Blog" },
   ],
   services: [

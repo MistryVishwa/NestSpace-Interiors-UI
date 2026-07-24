@@ -23,6 +23,7 @@ const navLinks = [
   { href: "/compare", label: "Compare" },
   { href: "/cost-estimator", label: "Cost Estimator" },
   { href: "/room-planner", label: "Room Planner" },
+  { href: "/mood-board", label: "Mood Board" },
   { href: "/designs", label: "Designs" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
