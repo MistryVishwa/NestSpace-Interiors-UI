@@ -14,6 +14,7 @@ const footerLinks = {
     { href: "/services", label: "Services" },
     { href: "/portfolio", label: "Portfolio" },
     { href: "/collections", label: "Collections" },
+    { href: "/before-after", label: "Before & After" },
     { href: "/cost-estimator", label: "Cost Estimator" },
     { href: "/room-planner", label: "Room Planner" },
     { href: "/mood-board", label: "Mood Board" },
