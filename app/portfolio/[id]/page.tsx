@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/breadcrumb"
 import { projects, type ProjectId } from "@/lib/portfolio-data"
 import { RecordProjectView } from "./record-project-view"
+import { FavoriteButton } from "@/components/favorites/FavoriteButton"
 
 
 export function generateStaticParams() {
@@ -116,12 +117,30 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
               </Link>
             </div>
 
-            <span className="text-primary font-medium uppercase tracking-wider text-sm block">
-              {project.category}
-            </span>
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mt-2 mb-6">
-              {project.title}
-            </h1>
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <span className="text-primary font-medium uppercase tracking-wider text-sm block">
+                  {project.category}
+                </span>
+                <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mt-2 mb-6">
+                  {project.title}
+                </h1>
+              </div>
+              <FavoriteButton
+                variant="button"
+                size="md"
+                design={{
+                  id,
+                  slug: id,
+                  title: project.title,
+                  roomType: project.category,
+                  style: project.category === "Kitchen" ? "Luxury" : project.category === "Office" ? "Executive" : project.category === "Luxury" ? "Spa" : "Modern",
+                  coverImage: project.heroImage,
+                  budgetRange: "$15,000 - $35,000",
+                  description: project.description,
+                }}
+              />
+            </div>
 
             {/* Meta Info */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8 border-y border-border">

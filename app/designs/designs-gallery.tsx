@@ -5,6 +5,7 @@ import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { X, ZoomIn, ChevronLeft, ChevronRight, Search } from "lucide-react"
+import { FavoriteButton } from "@/components/favorites/FavoriteButton"
 
 export interface DesignItem {
   id: number
@@ -146,6 +147,22 @@ export function DesignsGallery({ designs, categories }: DesignsGalleryProps) {
                         fill
                         className="object-cover"
                       />
+
+                      {/* Favorite Button Top Right */}
+                      <div className="absolute top-3 right-3 z-30">
+                        <FavoriteButton
+                          design={{
+                            id: `design-${design.id}`,
+                            slug: `design-${design.id}`,
+                            title: design.title,
+                            roomType: design.category,
+                            style: design.category === "Kitchen" ? "Luxury" : design.category === "Office" ? "Executive" : "Modern",
+                            coverImage: design.image,
+                            budgetRange: "$10,000 - $30,000",
+                            description: `${design.title} interior design concept.`,
+                          }}
+                        />
+                      </div>
                       {/* Overlay */}
                       <div className="absolute inset-0 bg-linear-to-t from-foreground/90 via-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
@@ -233,6 +250,22 @@ export function DesignsGallery({ designs, categories }: DesignsGalleryProps) {
                 fill
                 className="object-contain"
               />
+              <div className="absolute top-4 right-4 z-50">
+                <FavoriteButton
+                  variant="button"
+                  size="md"
+                  design={{
+                    id: `design-${lightboxImage.id}`,
+                    slug: `design-${lightboxImage.id}`,
+                    title: lightboxImage.title,
+                    roomType: lightboxImage.category,
+                    style: lightboxImage.category === "Kitchen" ? "Luxury" : lightboxImage.category === "Office" ? "Executive" : "Modern",
+                    coverImage: lightboxImage.image,
+                    budgetRange: "$10,000 - $30,000",
+                    description: `${lightboxImage.title} interior design concept.`,
+                  }}
+                />
+              </div>
             </div>
             <div className="absolute -bottom-20 left-0 right-0 text-center">
               <span className="text-background/60 text-sm font-medium uppercase tracking-wider">

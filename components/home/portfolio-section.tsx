@@ -9,6 +9,7 @@ import {
   useScrollRevealMany,
 } from "@/hooks/use-scroll-reveal";
 import { cn } from "@/lib/utils";
+import { FavoriteButton } from "@/components/favorites/FavoriteButton";
 
 const portfolioItems = [
   {
@@ -125,6 +126,22 @@ export function PortfolioSection() {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 style={{ viewTransitionName: `project-${item.id}` } as React.CSSProperties}
               />
+
+              {/* Favorite Button Top-Right Overlay */}
+              <div className="absolute top-3 right-3 z-30">
+                <FavoriteButton
+                  design={{
+                    id: item.id,
+                    slug: item.id,
+                    title: item.title,
+                    roomType: item.category,
+                    style: item.category === "Kitchen" ? "Luxury" : item.category === "Office" ? "Executive" : item.category === "Luxury" ? "Spa" : "Modern",
+                    coverImage: item.image,
+                    budgetRange: "$15,000 - $35,000",
+                    description: `${item.title} interior design project by NestSpace.`,
+                  }}
+                />
+              </div>
 
               {/* Default Subtle Overlay */}
               <div className="absolute inset-0 bg-linear-to-t from-foreground/70 via-foreground/10 to-transparent group-hover:opacity-0 transition-opacity duration-500" />

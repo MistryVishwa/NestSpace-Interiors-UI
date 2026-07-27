@@ -15,6 +15,8 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { RecentlyViewedStrip } from "./recently-viewed-strip"
+import { FavoriteButton } from "@/components/favorites/FavoriteButton"
+import type { FavoriteDesign } from "@/types/favorite"
 
 const ITEMS_PER_PAGE = 4
 
@@ -204,6 +206,22 @@ export function PortfolioGallery({ items, categories }: PortfolioGalleryProps) {
                       className="object-cover"
                       style={{ viewTransitionName: `project-${item.id}` } as React.CSSProperties}
                     />
+                    
+                    {/* Favorite Button Top-Right */}
+                    <div className="absolute top-4 right-4 z-20">
+                      <FavoriteButton
+                        design={{
+                          id: item.id,
+                          slug: item.id,
+                          title: item.title,
+                          roomType: item.category,
+                          style: item.category === "Kitchen" ? "Luxury" : item.category === "Office" ? "Executive" : item.category === "Luxury" ? "Spa" : "Modern",
+                          coverImage: item.image,
+                          budgetRange: "$15,000 - $35,000",
+                          description: item.description,
+                        }}
+                      />
+                    </div>
                     
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-linear-to-t from-foreground/90 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
